@@ -65,30 +65,66 @@ class Data(object):
 
         attrDic = {}
         classDic = {}
-        m = []
+        colFound = False
+        rowFound = False
 
-        # Create dicionaries containing row a column numbers for the matrix
-        count = 0
-        for x in self.listAttributeValues(attr):
-            attrDic[x] = count
-            count += 1
-        count = 0
-        for x in self.listAttributeValues(self.getClassName()):
-            classDic[x] = count
-            count += 1
         # Initialize the matrix
-        m = [[0 for i in range(len(attrDic)+1)] for j in range(len(classDic)+1)]
-        # Insert values on the first row and classes on the first column
-        for valueName in attrDic.values():
-            m[0][attrDic[valueName]] = valueName
-        for className in classDic.values():
-            m[classDic[className], 0] = className
-        # Increment matrix positions according to the values
-        for vector in self.instances:
+        m = self.listAttributeValues(attr)
+        numValues = len(m)
+        m.insert(0, 0)
+        for val in self.listClassValues():
+            newRow = [0]*numValues
+            newRow.insert(0, val)
+            m.append(newRow)
 
-            row = classDic[vector[self.getClassName()]]
-            col = attrDic[vector[attr]]
-            m[row][col] += 1
+        # Calculate matrix positions
+        # Iterate over the columns (possible values)
+        colFound = False
+        for col in range(len(m[0])):
+            if entry[attr] == m[0][col]:
+                # Found column with the same attribute value
+                colFound = True
+                colInd = col
+
+        # Iterate over the rows (classes)
+        rowFound = False
+        for row in range(len(m)):
+            if m[0][row] == entry[className]:
+                # Found row
+                rowFound = True
+                rowInd = row
+
+        if rowInd >= 0 and colInd >= 0:
+            # Position was Found
+            m[colInd][rowInd] += 1
+        else:
+            raise ValueError("Error finding position in matrix: col: {}, row: {}".format(colInd, rowInd))
+
+        print('Resulting matrix:')
+        print(m)
+
+        # # Create dicionaries containing row a column numbers for the matrix
+        # count = 0
+        # for x in self.listAttributeValues(attr):
+        #     attrDic[x] = count
+        #     count += 1
+        # count = 0
+        # for x in self.listAttributeValues(self.getClassName()):
+        #     classDic[x] = count
+        #     count += 1
+        # # Initialize the matrix
+        # m = [[0 for i in range(len(attrDic)+1)] for j in range(len(classDic)+1)]
+        # # Insert values on the first row and classes on the first column
+        # for valueName in attrDic.values():
+        #     m[0][attrDic[valueName]] = valueName
+        # for className in classDic.values():
+        #     m[classDic[className], 0] = className
+        # # Increment matrix positions according to the values
+        # for vector in self.instances:
+        #
+        #     row = classDic[vector[self.getClassName()]]
+        #     col = attrDic[vector[attr]]
+        #     m[row][col] += 1
 
             # ------------------- old
             # if vector[attr] not in dic.keys():
@@ -111,6 +147,17 @@ class Data(object):
             if row[attr] not in valueList:
                 valueList.append(row[attr])
         return valueList
+
+    def listClassValues(self):
+        """
+        Returns a list containing all the possible class values
+        """
+        classList = []
+        className = self.getClassName()
+        for row in self.instances:
+            if row[className] not in classList:
+                classList.append(row[className])
+        return classList
 
     def getClassName(self):
         return self.keys[-1] if len(self.keys) > 1 else None
