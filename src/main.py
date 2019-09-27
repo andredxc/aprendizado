@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import csv
 from math import log
 
@@ -68,72 +70,50 @@ class Data(object):
         colFound = False
         rowFound = False
 
+        # Matrix format
+        # [[0, 'Ensolarado', 'Nublado', 'Chuvoso'], 
+        #  ['Falso', 0, 0, 0], 
+        #  ['Verdadeiro', 0, 0, 0]]
+
+
         # Initialize the matrix
-        m = self.listAttributeValues(attr)
-        numValues = len(m)
-        m.insert(0, 0)
+        m = []
+        m.append(self.listAttributeValues(attr))
+        numValues = len(self.listAttributeValues(attr))
+        m[0].insert(0, 0)
         for val in self.listClassValues():
             newRow = [0]*numValues
             newRow.insert(0, val)
             m.append(newRow)
 
-        # Calculate matrix positions
-        # Iterate over the columns (possible values)
-        colFound = False
-        for col in range(len(m[0])):
-            if entry[attr] == m[0][col]:
-                # Found column with the same attribute value
-                colFound = True
-                colInd = col
+        # Summarize every instance
+        className = self.getClassName()
+        for entry in self.instances:
+            # Calculate matrix positions
+            colInd = rowInd = -1
+            # Iterate over the columns (possible values)
+            for col in range(1, len(m[0])):
+                if entry[attr] == m[0][col]:
+                    # Found column with the same attribute value
+                    colInd = col
 
-        # Iterate over the rows (classes)
-        rowFound = False
-        for row in range(len(m)):
-            if m[0][row] == entry[className]:
-                # Found row
-                rowFound = True
-                rowInd = row
+            # Iterate over the rows (classes)
+            for row in range(1, len(m)):
+                if m[row][0] == entry[className]:
+                    # Found row
+                    rowInd = row
 
-        if rowInd >= 0 and colInd >= 0:
-            # Position was Found
-            m[colInd][rowInd] += 1
-        else:
-            raise ValueError("Error finding position in matrix: col: {}, row: {}".format(colInd, rowInd))
+            if rowInd >= 0 and colInd >= 0:
+                # Position was Found
+                print("Entry: {} - {}".format(entry[attr], entry[className]))
+                # print("Incrementing position: [{}, {}]".format(rowInd, colInd))
+                m[rowInd][colInd] += 1
+                # print("New matrix: {}".format(m))
+            else:
+                raise ValueError("Error finding position in matrix: col: {}, row: {}".format(colInd, rowInd))
 
         print('Resulting matrix:')
         print(m)
-
-        # # Create dicionaries containing row a column numbers for the matrix
-        # count = 0
-        # for x in self.listAttributeValues(attr):
-        #     attrDic[x] = count
-        #     count += 1
-        # count = 0
-        # for x in self.listAttributeValues(self.getClassName()):
-        #     classDic[x] = count
-        #     count += 1
-        # # Initialize the matrix
-        # m = [[0 for i in range(len(attrDic)+1)] for j in range(len(classDic)+1)]
-        # # Insert values on the first row and classes on the first column
-        # for valueName in attrDic.values():
-        #     m[0][attrDic[valueName]] = valueName
-        # for className in classDic.values():
-        #     m[classDic[className], 0] = className
-        # # Increment matrix positions according to the values
-        # for vector in self.instances:
-        #
-        #     row = classDic[vector[self.getClassName()]]
-        #     col = attrDic[vector[attr]]
-        #     m[row][col] += 1
-
-            # ------------------- old
-            # if vector[attr] not in dic.keys():
-            #     # Store a new possible attribute value
-            #     dic[vector[attr]] = 1
-            # else:
-            #     # Increment number of occurances
-            #     num = dic[vector[attr]]
-            #     dic[vector[attr]] = num + 1
 
         return m
 
