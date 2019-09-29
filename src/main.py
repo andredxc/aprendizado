@@ -21,28 +21,18 @@ class DecisionTree(object):
         print(m)
 
 
-        # if len(keyName) == 0:
-        #     # Calculate entropy for the class
-        #     keyName = self.data.getClassName()
-        #
-        # dic = self.data.summarize(keyName)
-        # info = 0
-        # total = len(self.data.instances)
-        # for value in dic.values():
-        #     info -= value/total*log(value/total, 2)
-        #
-        # print(dic)
-        # print("Info for '{}': {}".format(keyName, info))
-        # return info
-
-
 class Data(object):
 
     keys = []
     instances = []
 
-    def __init__(self):
-        pass
+    def __init__(self, filename, className):
+
+        self.parseFromFile(filename)
+        if className not in self.keys:
+            raise ValueError("Could not find class '{}' in the dataset".\
+                format(className))
+        self.className = className
 
     def addInstance(self, newInstance):
 
@@ -61,20 +51,15 @@ class Data(object):
         if attr not in self.keys:
             raise ValueError("Attr '{}' does not exist in the dictionary".format(attr))
 
-        # dic = {}    # KEYS: attribute values. VALUES: number of occurances
-        # l = []
-        # attrValues = []
-
         attrDic = {}
         classDic = {}
         colFound = False
         rowFound = False
 
         # Matrix format
-        # [[0, 'Ensolarado', 'Nublado', 'Chuvoso'], 
-        #  ['Falso', 0, 0, 0], 
+        # [[0, 'Ensolarado', 'Nublado', 'Chuvoso'],
+        #  ['Falso', 0, 0, 0],
         #  ['Verdadeiro', 0, 0, 0]]
-
 
         # Initialize the matrix
         m = []
@@ -87,7 +72,6 @@ class Data(object):
             m.append(newRow)
 
         # Summarize every instance
-        className = self.getClassName()
         for entry in self.instances:
             # Calculate matrix positions
             colInd = rowInd = -1
@@ -99,13 +83,14 @@ class Data(object):
 
             # Iterate over the rows (classes)
             for row in range(1, len(m)):
-                if m[row][0] == entry[className]:
+                if m[row][0] == entry[self.className]:
                     # Found row
                     rowInd = row
 
             if rowInd >= 0 and colInd >= 0:
                 # Position was Found
-                print("Entry: {} - {}".format(entry[attr], entry[className]))
+                print("Entry: {} - {}".format(entry[attr],
+                                              entry[self.className]))
                 # print("Incrementing position: [{}, {}]".format(rowInd, colInd))
                 m[rowInd][colInd] += 1
                 # print("New matrix: {}".format(m))
@@ -133,31 +118,21 @@ class Data(object):
         Returns a list containing all the possible class values
         """
         classList = []
-        className = self.getClassName()
         for row in self.instances:
-            if row[className] not in classList:
-                classList.append(row[className])
+            if row[self.className] not in classList:
+                classList.append(row[self.className])
         return classList
 
-    def getClassName(self):
-        return self.keys[-1] if len(self.keys) > 1 else None
+    def parseFromFile(self, filename):
+
+        reader = csv.DictReader(open(filename, mode='r'), delimiter=';')
+        for row in reader:
+            self.addInstance(row)
 
 
-def parseFile(filename):
-    """
-    :returns: Data
-    """
-
-    reader = csv.DictReader(open(filename, mode='r'), delimiter=';')
-    dataset = Data()
-
-    for row in reader:
-        dataset.addInstance(row)
-
-    return dataset
-
-
-data = parseFile('../data/dadosBenchmark_validacaoAlgoritmoAD.csv')
+filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
+className = 'Joga'
+data = Data(filename, className)
 tree = DecisionTree(data)
 # data.summarize('Tempo')
 tree.calculateInfo('Tempo')
