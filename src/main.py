@@ -7,9 +7,21 @@ from math import log
 class DecisionTree(object):
 
     root = None
+    data = None
 
-    def __init__(self):
-        pass
+    def __init__(self, data):
+        self.data = data
+
+    def create(self):
+
+        self.root = DecisionNode(data)
+        splitDic = self.root.findAttribute()
+
+        for key in splitDic.keys():
+
+
+
+
 
 class DecisionNode(object):
 
@@ -86,7 +98,7 @@ class DecisionNode(object):
         print("Attribute for DecisionNode: {0} with {1:.3f} bits".\
             format(highest[0], highest[1]))
 
-    def setChildrenData(self):
+    def splitData(self):
         """
         Splits the dataset amongst the children nodes according to the attribute
         previously set.
@@ -95,27 +107,27 @@ class DecisionNode(object):
             raise ValueError("Attribute value is not yet set")
 
         # Split dataset
-        self.children = {}
+        splitDic = {}
         for entry in self.data.instances:
-
-            # TODO: remove attribute from chilren datasets
-            if entry[self.attribute] in self.children.keys():
+            # TODO: remove the current node's attribute from chilren datasets
+            newEntry = entry.copy()
+            del newEntry[self.attribute]
+            if entry[self.attribute] in splitDic.keys():
                 # Value had already been found
-                self.children[entry[self.attribute]].append(entry)
+                splitDic[entry[self.attribute]].append(newEntry)
             else:
                 # Value found for the first time
-                self.children[entry[self.attribute]] = [entry]
+                splitDic[entry[self.attribute]] = [newEntry]
 
-        for key in self.children.keys():
+        for key in splitDic.keys():
             print("Dictionaries for key: {}".format(key))
-            [print(x) for x in self.children[key]]
+            [print(x) for x in splitDic[key]]
+
+        return splitDic
 
     def process(self):
 
         self.findAttribute()
-
-
-
 
 class Data(object):
 
@@ -234,16 +246,31 @@ class Data(object):
         for row in reader:
             self.addInstance(row)
 
+    def uniformClass(self):
+        """
+        Checks if there is more than one class value in the dataset.
+        :returns: True if data is uniform, False otherwise
+        """
+        value = self.instances[self.className]
+        for entry in self.instances:
+            if entry[self.className] != value:
+                return False
+
+        return False
+
+
 # ---------------------------------------
 
 filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
 className = 'Joga'
 data = Data(className)
+
 data.parseFromFile(filename)
 node = DecisionNode(data)
 
 node.findAttribute()
-node.setChildrenData()
+d = node.splitData()
+
 
 # data.summarize('Tempo')
 # tree.attributeInfo('Tempo')
