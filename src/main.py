@@ -6,6 +6,8 @@ from math import log
 
 class DecisionTree(object):
 
+    root = None
+
     def __init__(self):
         pass
 
@@ -13,6 +15,7 @@ class DecisionNode(object):
 
     data = None
     attribute = None
+    children = {}
 
     def __init__(self, data):
         self.data = data
@@ -32,7 +35,7 @@ class DecisionNode(object):
             sum = 0
             for row in range(1, len(m)):
                 # Each row
-                x = m[row][col]/m[-1][col]
+                x = float(m[row][col])/float(m[-1][col])
                 if x != 0:
                     sum = sum - x*log(x, 2)
 
@@ -57,7 +60,7 @@ class DecisionNode(object):
 
         # Calculate information
         for key in classDic.keys():
-            x = classDic[key]/n
+            x = float(classDic[key])/float(n)
             sum -= x*log(x, 2)
 
         return sum
@@ -68,7 +71,10 @@ class DecisionNode(object):
         return infoGain
 
     def findAttribute(self):
-
+        """
+        Set the attribute variable to whichever attribute provides the most
+        information.
+        """
         highest = ("", 0)
         for attr in self.data.attributes:
             infoGain = self.infoGain(attr)
@@ -77,8 +83,38 @@ class DecisionNode(object):
                 highest = (attr, infoGain)
 
         self.attribute = highest[0]
-        print("Attriute for DecisionNode: {0} with {1:.3f} bits".\
+        print("Attribute for DecisionNode: {0} with {1:.3f} bits".\
             format(highest[0], highest[1]))
+
+    def setChildrenData(self):
+        """
+        Splits the dataset amongst the children nodes according to the attribute
+        previously set.
+        """
+        if not self.attribute:
+            raise ValueError("Attribute value is not yet set")
+
+        # Split dataset
+        self.children = {}
+        for entry in self.data.instances:
+
+            # TODO: remove attribute from chilren datasets
+            if entry[self.attribute] in self.children.keys():
+                # Value had already been found
+                self.children[entry[self.attribute]].append(entry)
+            else:
+                # Value found for the first time
+                self.children[entry[self.attribute]] = [entry]
+
+        for key in self.children.keys():
+            print("Dictionaries for key: {}".format(key))
+            [print(x) for x in self.children[key]]
+
+    def process(self):
+
+        self.findAttribute()
+
+
 
 
 class Data(object):
@@ -205,7 +241,9 @@ className = 'Joga'
 data = Data(className)
 data.parseFromFile(filename)
 node = DecisionNode(data)
+
 node.findAttribute()
+node.setChildrenData()
 
 # data.summarize('Tempo')
 # tree.attributeInfo('Tempo')
