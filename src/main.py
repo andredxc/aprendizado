@@ -14,13 +14,24 @@ class DecisionTree(object):
 
     def create(self):
 
-        self.root = DecisionNode(data)
-        splitDic = self.root.findAttribute()
+        self.root = self.generateNode(self.data)
 
-        for key in splitDic.keys():
+        # for key in splitDic.keys():
 
+    def generateNode(self, data):
+        """
+        Recursive function which creates the DecisionNode for a given data along with its 
+        children nodes.
+        """
+        # TODO: test this
+        curNode = DecisionNode(data)
+        curNode.findAttribute()
+        splitDic = curNode.splitData()
+        for keyName in splitDic:
+            if not splitDic[keyName].uniformClass():
+                curNode.children[keyName] = generateNode(splitDic[keyName])
 
-
+        return curNode
 
 
 class DecisionNode(object):
@@ -85,8 +96,9 @@ class DecisionNode(object):
     def findAttribute(self):
         """
         Set the attribute variable to whichever attribute provides the most
-        information.
+        information and initializes the children dictionary.
         """
+        # Find the attribute with the highest information
         highest = ("", 0)
         for attr in self.data.attributes:
             infoGain = self.infoGain(attr)
@@ -95,14 +107,22 @@ class DecisionNode(object):
                 highest = (attr, infoGain)
 
         self.attribute = highest[0]
+
+        # Initialize the children dictionary
+        for value in self.data.listAttributeValues(self.attribute):
+            self.children[value] = None
+
         print("Attribute for DecisionNode: {0} with {1:.3f} bits".\
             format(highest[0], highest[1]))
+        
+        print("Children dic created: {}".format(self.children))
 
     def splitData(self):
         """
         Splits the dataset amongst the children nodes according to the attribute
         previously set.
         """
+        # TODO: return Data objects instead of dic lists
         if not self.attribute:
             raise ValueError("Attribute value is not yet set")
 
@@ -258,6 +278,16 @@ class Data(object):
 
         return False
 
+    def copyWithoutAttribute(self, attrName):
+        """
+        Copies the Data insntance without the dic entries for a specific attribute name.
+        """
+        # TODO: test this
+        copy = self.copy()
+        for entry in copy.instances:
+            del entry[attrName]
+
+
 
 # ---------------------------------------
 
@@ -269,7 +299,7 @@ data.parseFromFile(filename)
 node = DecisionNode(data)
 
 node.findAttribute()
-d = node.splitData()
+# d = node.splitData()
 
 
 # data.summarize('Tempo')
