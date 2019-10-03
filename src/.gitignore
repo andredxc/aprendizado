@@ -1,0 +1,9 @@
+# Ignore the virtual environment as it is platform dependent
+__pycache__/
+
+# Python generated files
+*.pyo
+*.pyc
+
+# Visual Studio Code settings
+.vscode
