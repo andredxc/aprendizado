@@ -6,49 +6,83 @@ from math import log
 
 class DecisionTree(object):
 
-    root = None
-    data = None
-
     def __init__(self, data):
         self.data = data
+        self.root = None
 
-    def create(self):
+    def train(self):
 
         self.root = self.generateNode(self.data)
-
-        # for key in splitDic.keys():
 
     def generateNode(self, data):
         """
         Recursive function which creates the DecisionNode for a given data along with its 
         children nodes.
         """
-        # TODO: test this
         curNode = DecisionNode(data)
-        curNode.findAttribute()
-        splitDic = curNode.splitData()
-        for keyName in splitDic:
-            if not splitDic[keyName].uniformClass():
-                curNode.children[keyName] = generateNode(splitDic[keyName])
+        curNode.evaluate()
+        if len(curNode.children) == 0:
+            # Leaf node
+            return curNode
+        else:
+            # Split data for children nodes    
+            splitDic = curNode.splitData()
+            for keyName in splitDic:
+                curNode.children[keyName] = self.generateNode(splitDic[keyName])
 
-        return curNode
+            return curNode
+
+    def print(self, valName='', indent=0, start=None):
+
+        if not start:
+            start = self.root
+        
+        # Recursively print nodes
+        s = "   "*indent
+        if len(start.children) == 0:
+            print("{}- {} -> {}".format(s, valName, start.guess))
+        else:
+            print("{}- {} -> {}".format(s, valName, start.attribute))
+
+        for key in start.children:
+            if start.children[key]:
+                self.print(key, indent+1, start.children[key])
+
+    def classify(self, instance, node=None):
+        """
+        Recursively navigates the tree to classify a new instance
+        :returns: predicted class name for the given instance
+        """
+        if not self.root:
+            raise AttributeError("The decision tree has not yet been trained")
+
+        if not node:
+            node = self.root
+
+        if len(node.children) == 0:
+            # Leaf node
+            return node.guess
+        else:
+            nextNode = node.children[instance[node.attribute]]
+            return self.classify(instance, node=nextNode)
 
 
 class DecisionNode(object):
 
-    data = None
-    attribute = None
-    children = {}
-
     def __init__(self, data):
         self.data = data
+        self.attribute = None
+        self.children = {}
+        self.guess = None
 
     def __repr__(self):
-        return "<DecisionNode {}>".format(self.name)
+        return "<DecisionNode {}>".format(self.attribute)
 
-    def attributeInfo(self, keyName):
-
-        m = self.data.summarize(keyName)
+    def attributeInfo(self, attrName):
+        """
+        Calculates the information value for a given attribute.
+        """
+        m = self.data.summarize(attrName)
         n = len(self.data.instances)
         info = 0
 
@@ -67,7 +101,9 @@ class DecisionNode(object):
         return info
 
     def classInfo(self):
-
+        """
+        Calculates the class information value.
+        """
         n = len(self.data.instances)
         sum = 0
         classDic = {}
@@ -88,76 +124,70 @@ class DecisionNode(object):
 
         return sum
 
-    def infoGain(self, keyName):
-
-        infoGain = self.classInfo() - self.attributeInfo(keyName)
+    def infoGain(self, attrName):
+        """
+        Calculates the information gain for a attribute, which is defined as the class 
+        information - attribute information.
+        """
+        infoGain = self.classInfo() - self.attributeInfo(attrName)
         return infoGain
 
-    def findAttribute(self):
+    def evaluate(self):
         """
         Set the attribute variable to whichever attribute provides the most
         information and initializes the children dictionary.
         """
-        # Find the attribute with the highest information
-        highest = ("", 0)
-        for attr in self.data.attributes:
-            infoGain = self.infoGain(attr)
-            if infoGain > highest[1]:
-                # Found better attribute
-                highest = (attr, infoGain)
+        if self.data.uniformClass():
+            # Node is a leaf
+            self.guess = self.data.instances[0][self.data.className]
 
-        self.attribute = highest[0]
+            print("Leaf node with guess: {}".format(self.guess))
+        else:
+            # Find the attribute with the highest information
+            highest = ("", 0)
+            for attr in self.data.attributes:
+                infoGain = self.infoGain(attr)
+                if infoGain > highest[1]:
+                    # Found better attribute
+                    highest = (attr, infoGain)
 
-        # Initialize the children dictionary
-        for value in self.data.listAttributeValues(self.attribute):
-            self.children[value] = None
+            self.attribute = highest[0]
 
-        print("Attribute for DecisionNode: {0} with {1:.3f} bits".\
-            format(highest[0], highest[1]))
-        
-        print("Children dic created: {}".format(self.children))
+            # Initialize the children dictionary
+            for value in self.data.listAttributeValues(self.attribute):
+                self.children[value] = None
+
+            print("Attribute for DecisionNode: {0} with {1:.3f} bits".\
+                format(highest[0], highest[1]))
 
     def splitData(self):
         """
         Splits the dataset amongst the children nodes according to the attribute
         previously set.
         """
-        # TODO: return Data objects instead of dic lists
         if not self.attribute:
             raise ValueError("Attribute value is not yet set")
 
         # Split dataset
-        splitDic = {}
-        for entry in self.data.instances:
-            # TODO: remove the current node's attribute from chilren datasets
-            newEntry = entry.copy()
-            del newEntry[self.attribute]
-            if entry[self.attribute] in splitDic.keys():
-                # Value had already been found
-                splitDic[entry[self.attribute]].append(newEntry)
-            else:
-                # Value found for the first time
-                splitDic[entry[self.attribute]] = [newEntry]
+        splitDic = self.data.split(self.attribute)
 
-        for key in splitDic.keys():
-            print("Dictionaries for key: {}".format(key))
-            [print(x) for x in splitDic[key]]
+        # for key in splitDic.keys():
+        #     print("Dictionaries for key: {}".format(key))
+        #     [print(x) for x in splitDic[key].instances]
 
         return splitDic
 
-    def process(self):
-
-        self.findAttribute()
 
 class Data(object):
 
-    keys = []
-    instances = []
-    attributes = []
-    className = ""
-
     def __init__(self, className):
         self.className = className
+        self.keys = []
+        self.instances = []
+        self.attributes = []
+
+    def __repr__(self):
+        return "<Data {} -> {}>".format(self.attributes, self.className)
 
     def addInstance(self, newInstance):
 
@@ -176,7 +206,10 @@ class Data(object):
         self.instances.append(newInstance)
 
     def summarize(self, attr, class_restriction=False):
-
+        """
+        Returns a matrix which has formatted useful data used to calculate the amount of 
+        information for an attribute.
+        """
         if attr not in self.keys:
             raise ValueError("Attr '{}' does not exist in the dictionary".format(attr))
 
@@ -189,7 +222,7 @@ class Data(object):
         # [[0, 'Ensolarado', 'Nublado', 'Chuvoso'],
         #  ['Falso', 0, 0, 0],
         #  ['Verdadeiro', 0, 0, 0],
-        #  [0, sum, sum, sums]]
+        #  [0, sum, sum, sum]]
 
         # Initialize the matrix
         m = []
@@ -233,10 +266,6 @@ class Data(object):
                 sumRow[col] += m[row][col]
 
         m.append(sumRow)
-
-        # print('Resulting matrix:')
-        # print(m)
-
         return m
 
     def listAttributeValues(self, attr):
@@ -264,49 +293,67 @@ class Data(object):
 
         reader = csv.DictReader(open(filename, mode='r'), delimiter=';')
         for row in reader:
-            self.addInstance(row)
+            # row is an OrderedDict by default
+            self.addInstance(dict(row))
 
     def uniformClass(self):
         """
         Checks if there is more than one class value in the dataset.
         :returns: True if data is uniform, False otherwise
         """
-        value = self.instances[self.className]
+        value = self.instances[0][self.className]
         for entry in self.instances:
             if entry[self.className] != value:
                 return False
 
-        return False
+        return True
 
-    def copyWithoutAttribute(self, attrName):
+    def split(self, attrName):
         """
-        Copies the Data insntance without the dic entries for a specific attribute name.
+        Splits the data into however Data objecst is dictated by the number of values for 
+        the specified attribute name. And deletes all the values correponding to the 
+        specified attribute from the returned instances.
+        :returns: dictionary containing the values as keys and Data instances as values
         """
-        # TODO: test this
-        copy = self.copy()
-        for entry in copy.instances:
-            del entry[attrName]
+        splitDic = {}
+        for entry in self.instances:
+            newEntry = entry.copy()
+            del newEntry[attrName]
+            if entry[attrName] not in splitDic.keys():
+                # Create a new Data instance
+                newData = Data(self.className)
+                splitDic[entry[attrName]] = newData
 
+            splitDic[entry[attrName]].addInstance(newEntry)
+
+        return splitDic
 
 
 # ---------------------------------------
-
 filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
 className = 'Joga'
 data = Data(className)
-
 data.parseFromFile(filename)
-node = DecisionNode(data)
 
-node.findAttribute()
-# d = node.splitData()
-
-
-# data.summarize('Tempo')
-# tree.attributeInfo('Tempo')
+tree = DecisionTree(data)
+tree.train()
+tree.print()
 
 
-# print(tree.classInfo())
+correctGuesses = 0
+wrongGuesses = 0
+for entry in data.instances:
+    right = entry[data.className]
+    guess = tree.classify(entry)
 
-# print("Dictionary keys: {}".format(data.keys))
-# print(data.summarize('Tempo'))
+    if right == guess:
+        correctGuesses += 1
+    else:
+        wrongGuesses += 1
+
+
+if wrongGuesses > 0:
+    print("Number of correct guesses: {}".format(correctGuesses))
+    raise SystemError("WRONG GUESSES: {}".format(wrongGuesses))
+else:
+    print("SUCCESS, {} correct guesses".format(correctGuesses))
