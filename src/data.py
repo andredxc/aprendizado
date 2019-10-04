@@ -214,8 +214,6 @@ class Data(object):
 
         return folds
 
-
-
     def generateBootstraps(self, k=1):
         '''
         Randomly generates 'k' sets of instances with repetition for the training set and sets of instances that aren't in the training set for the testing set.

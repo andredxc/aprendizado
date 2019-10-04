@@ -3,13 +3,48 @@ from random import shuffle
 
 class RandomForest(object):
 
-    def __init__(self):
+    def __init__(self, data):
         self.trees = [] #List of trees
 
-    def generateForest(self, data, numTrees=5):
+        #Splits instances into folds
+        folds = data.generateStratifiedFolds(k=3)
+
+        #Adds the first fold as testing data
+        self.testingData = Data(data.className, data.numeric)
+        for instance in folds[0]:
+            self.testingData.addInstance(instance)
+
+        #Adds the other folds as training data
+        self.data = Data(data.className, data.numeric)
+        for instance in folds[1:]:
+            self.data.addInstance(instance)
+
+
+    def generateForest(self, numTrees=5):
         '''
         Generates 'numTrees' random trees trained from 'data'
         '''
+        #Generates a bootstrap for each tree from the training data
+        bootstraps = self.data.generateStratifiedBootstraps(numTrees)
+        
+        #Creates <Data> objects for each training set in the bootstraps
+        treeTrainingData = []
+        for i in range(numTrees):
+            treeTrainingData.append(Data(self.data.className, self.data.numeric))
+            for instance in bootstraps[i][0]:
+                treeTrainingData[i].addInstance(instance)
+
+        #Creates <Data> objects for each testing set in the bootstraps
+        treeTestingData = []
+        for i in range(numTrees):
+            treeTestingData.append(Data(self.data.className, self.data.numeric))
+            for instance in bootstraps[i][1]:
+                treeTestingData[i].addInstance(instance)
+
+        #Creates each tree and trains them
+        for i in range(numTrees):
+            self.trees.append(DecisionTree(trainingData[i]))
+            self.trees[i].train()
 
     def classify(self, instance):
         '''
