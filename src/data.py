@@ -176,6 +176,25 @@ class Data(object):
 
     def generateBootstraps(self, k=1):
         '''
+        Randomly generates 'k' sets of instances with repetition for the training set and sets of instances that aren't in the training set for the testing set.
+        Returns the list of bootstraps.
+        TODO: Stratification (ensure each fold has the same diversity)
+        '''
+        bootstraps = []
+        for i in range(k):
+            bootstraps.append( ([], []) )   #Adds a new bootstrap. Each bootstrap is a tuple with a list of training instances (index 0) and a list of testing instances (index 1)
+
+            for j in range(len(self.instances)):    #Bootstraps have the same number of instances as the original data set
+                bootstraps[i][0].append(self.instances[random.randint(0, len(self.instances)-1)]) #Adds a random instance to the current's bootstrap training list
+
+            for j in range(len(self.instances)): #Goes through every instance again
+                if self.instances[j] not in bootstraps[i][0]:    #Checks for instances that weren't picked for the training list
+                    bootstraps[i][1].append(self.instances[j])   #Adds the instance to the testing list
+
+        return bootstraps
+
+    def generateStratifiedBootstraps(self, k=1):
+        '''
         Generates 'k' stratfied sets of instances with repetition for the training set and sets of instances that aren't in the training set for the testing set.
         Returns the list of bootstraps.
         TODO: Stratification (ensure each fold has the same diversity)
