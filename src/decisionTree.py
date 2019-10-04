@@ -42,6 +42,10 @@ class RandomForest(object):
 
             return highestVoted[0]
 
+    def evaluatePerformance(self, testingData):
+        '''
+        Classifies all the instances in 'testingData', compares results to the real class and generates performance statistics (accuracy, run time, etc.)
+        '''
 
 
 class DecisionTree(object):
