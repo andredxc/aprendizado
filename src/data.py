@@ -4,11 +4,12 @@ import random
 
 class Data(object):
 
-    def __init__(self, className):
+    def __init__(self, className, numeric=[]):
         self.className = className
         self.keys = []
         self.instances = []
         self.attributes = []
+        self.numericAttr = numeric
 
     def __repr__(self):
         return "<Data {} -> {}>".format(self.attributes, self.className)

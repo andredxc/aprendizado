@@ -10,7 +10,7 @@ data.parseFromFile(filename)
 
 tree = DecisionTree(data)
 tree.train()
-tree.print()
+# tree.print()
 
 
 correctGuesses = 0

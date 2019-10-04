@@ -1,4 +1,5 @@
-from math import log
+from math import log, sqrt
+from random import shuffle
 
 
 class DecisionTree(object):
@@ -66,11 +67,18 @@ class DecisionTree(object):
 
 class DecisionNode(object):
 
-    def __init__(self, data):
+    def __init__(self, data, m=0):
         self.data = data
         self.attribute = None
         self.children = {}
         self.guess = None
+        # Number of random features to be considered when splitting the node
+        if m == 0:
+            self.m = int(sqrt(len(self.data.attributes)))
+        else:
+            self.m = m if m <= len(self.data.instances) else len(self.data.instances)       
+
+        print("Node initialized with m = {} and attributes: \n{}".format(self.m, self.data.attributes))
 
     def __repr__(self):
         return "<DecisionNode {}>".format(self.attribute)
@@ -137,12 +145,15 @@ class DecisionNode(object):
         if self.data.uniformClass():
             # Node is a leaf
             self.guess = self.data.instances[0][self.data.className]
-
-            print("Leaf node with guess: {}".format(self.guess))
+            # print("Leaf node with guess: {}".format(self.guess))
         else:
             # Find the attribute with the highest information
             highest = ("", 0)
-            for attr in self.data.attributes:
+            # Use a sample of m random attributes
+            attrList = self.data.attributes
+            shuffle(attrList)
+            # print("Selecting attribute amongst: {}".format(attrList[0:self.m]))
+            for attr in attrList[0:self.m]:
                 infoGain = self.infoGain(attr)
                 if infoGain > highest[1]:
                     # Found better attribute
