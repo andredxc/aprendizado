@@ -7,6 +7,7 @@ filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
 className = 'Joga'
 data = Data(className)
 data.parseFromFile(filename)
+data.generateFolds(3, True)
 
 tree = DecisionTree(data)
 tree.train()

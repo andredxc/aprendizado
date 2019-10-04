@@ -1,5 +1,6 @@
 import csv
 import random
+from math import floor
 
 
 class Data(object):
@@ -153,32 +154,72 @@ class Data(object):
 
         return splitDic
 
-    def generateFolds(self, k=1):
+    def generateFolds(self, k=1, discardExtras=False):
         '''
-        Randomly splits the instances into 'k' groups as evenly as possible. 
-        Returns the list of folds. 
-        WARNING: The number of instances should be divisible by the number of folds, otherwise the last few folds will have 1 less instances than the rest.
-        TODO: Startification (ensure each fold has the same diversity)
+        Generates 'k' sets of instances without repetition.
+        WARNING: setting 'discardExtras' to False will cause folds to have different sizes if the number of instances isn't divisible by 'k'.
+        Returns the list of folds.
         '''
+
         instancesCopy = self.instances.copy()
         folds = []
-        #Initializes the specified number of folds with empty lists
         for i in range(k):
-            folds.append([])
+            folds.append([])    #New fold
 
-        #Randomly adds an instance to each fold until there are not more instances left
-        while len(instancesCopy) != 0:
-            for i in range(k):
-                if(len(instancesCopy) != 0):
-                    folds[i].append(instancesCopy.pop(random.randint(0, len(instancesCopy)-1)))
+            #Adds 'instances/k' (rounded down) random instances to each fold
+            for j in range(floor(len(self.instances)/k)):
+                folds[i].append(instancesCopy.pop(random.randint(0, len(instancesCopy)-1)))
+
+        #Evenly distributes the remaining instances. Will cause some folds to have 1 more instance than others if the number of instances isn't divisible by 'k'.
+        if discardExtras == False:
+            while len(instancesCopy) != 0:
+                for i in range(k):
+                    if(len(instancesCopy) != 0):
+                        folds[i].append(instancesCopy.pop(random.randint(0, len(instancesCopy)-1)))    
 
         return folds
+
+    def generateStratifiedFolds(self, k=1, discardExtras=False):
+        '''
+        Generates 'k' stratified sets of instances without repetition.
+        WARNING: setting 'discardExtras' to False will cause folds to have different sizes if the number of instances isn't divisible by 'k'.
+        Returns the list of folds.
+        '''
+
+        classValueDistribution = {}
+        for value in self.listClassValues(): #For each possible class value
+            matchingInstances = [instance for instance in self.instances if instance[self.className] == value] #Instances that have the matching value
+            classValueDistribution[value] = len(matchingInstances)/len(self.instances)  #Percentage of instances that have this value
+
+        instancesCopy = self.instances.copy()   #Pool of instances that haven't been picked
+        folds = []
+        for i in range(k):
+            folds.append([])    #New fold
+
+            for value in self.listClassValues(): #For each possible class value
+                matchingInstances = [instance for instance in instancesCopy if instance[self.className] == value] #Instances that have the matching value
+
+                #Adds matching instances to the fold keeping the same value proportion as the full data set
+                for j in range(floor((len(self.instances)/k) * classValueDistribution[value])):
+                    selectedInstance = matchingInstances.pop(random.randint(0, len(matchingInstances)-1))   #Selects random matching instance
+                    folds[i].append(selectedInstance)   #Adds selected instance to the fold
+                    instancesCopy.remove(selectedInstance)  #Removes selected instance from the pool
+
+        #Evenly distributes the remaining instances. Will cause some folds to have 1 more instance than others if the number of instances isn't divisible by 'k'.
+        if discardExtras == False:
+            while len(instancesCopy) != 0:
+                for i in range(k):
+                    if(len(instancesCopy) != 0):
+                        folds[i].append(instancesCopy.pop(random.randint(0, len(instancesCopy)-1)))
+
+        return folds
+
+
 
     def generateBootstraps(self, k=1):
         '''
         Randomly generates 'k' sets of instances with repetition for the training set and sets of instances that aren't in the training set for the testing set.
         Returns the list of bootstraps.
-        TODO: Stratification (ensure each fold has the same diversity)
         '''
         bootstraps = []
         for i in range(k):
@@ -196,15 +237,13 @@ class Data(object):
     def generateStratifiedBootstraps(self, k=1):
         '''
         Generates 'k' stratfied sets of instances with repetition for the training set and sets of instances that aren't in the training set for the testing set.
-        Returns the list of bootstraps.
-        TODO: Stratification (ensure each fold has the same diversity)
+        Returns the list of bootstraps. Each bootstrap is a tuple with a list of training instances (index 0) and a list of testing instances (index 1).
         '''
         bootstraps = []
         for i in range(k):  #For each bootstrap
-            bootstraps.append( ([], []) )   #Adds a new bootstrap. Each bootstrap is a tuple with a list of training instances (index 0) and a list of testing instances (index 1)
+            bootstraps.append( ([], []) )   #Adds a new bootstrap
 
-            classValues = self.listClassValues()
-            for value in classValues: #For each possible class value
+            for value in self.listClassValues(): #For each possible class value
                 matchingInstances = [instance for instance in self.instances if instance[self.className] == value] #Instances that have the matching value
 
                 #Add to the bootstrap the same number of instances with that value that are in the data set
