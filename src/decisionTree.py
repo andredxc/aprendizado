@@ -1,6 +1,48 @@
 from math import log, sqrt
 from random import shuffle
 
+class RandomForest(object):
+
+    def __init__(self):
+        self.trees = [] #List of trees
+
+    def generateForest(self, data, numTrees=5):
+        '''
+        Generates 'numTrees' random trees trained from 'data'
+        '''
+
+    def classify(self, instance):
+        '''
+        Classifies an instance.
+        Returns the predicted class.
+        '''
+
+        if len(self.trees) == 0:
+            print("Forest not generated yet! Can't classify!")
+            return None
+        else:
+            predictions = []
+            #Gathers the predictions of each tree
+            for tree in self.trees:
+                predictions.append(tree.classify(instance))
+
+            #Builds a dictionary with the predictions and the amount of each one
+            results = {}
+            for prediction in predictions:
+                if prediction not in results.keys():    #New entry
+                    results[prediction] = 0
+
+                results[prediction] += 1
+
+            highestVoted = ("", 0)
+            #Selects the result with most votes
+            for result in results.keys():
+                if results[result] > highestVoted[1]:
+                    highestVoted = (result, results[result])
+
+            return highestVoted[0]
+
+
 
 class DecisionTree(object):
 
