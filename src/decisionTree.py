@@ -1,5 +1,6 @@
 from math import log, sqrt
 from random import shuffle
+from data import Data
 
 class RandomForest(object):
 
@@ -7,17 +8,18 @@ class RandomForest(object):
         self.trees = [] #List of trees
 
         #Splits instances into folds
-        folds = data.generateStratifiedFolds(k=3)
+        folds = data.generateStratifiedFolds(3)
 
         #Adds the first fold as testing data
-        self.testingData = Data(data.className, data.numeric)
+        self.testingData = Data(data.className, data.numericAttr)
         for instance in folds[0]:
             self.testingData.addInstance(instance)
 
         #Adds the other folds as training data
-        self.data = Data(data.className, data.numeric)
-        for instance in folds[1:]:
-            self.data.addInstance(instance)
+        self.data = Data(data.className, data.numericAttr)
+        for fold in folds[1:]:
+            for instance in fold:
+                self.data.addInstance(instance)
 
 
     def generateForest(self, numTrees=5):
@@ -30,20 +32,20 @@ class RandomForest(object):
         #Creates <Data> objects for each training set in the bootstraps
         treeTrainingData = []
         for i in range(numTrees):
-            treeTrainingData.append(Data(self.data.className, self.data.numeric))
+            treeTrainingData.append(Data(self.data.className, self.data.numericAttr))
             for instance in bootstraps[i][0]:
                 treeTrainingData[i].addInstance(instance)
 
         #Creates <Data> objects for each testing set in the bootstraps
         treeTestingData = []
         for i in range(numTrees):
-            treeTestingData.append(Data(self.data.className, self.data.numeric))
+            treeTestingData.append(Data(self.data.className, self.data.numericAttr))
             for instance in bootstraps[i][1]:
                 treeTestingData[i].addInstance(instance)
 
         #Creates each tree and trains them
         for i in range(numTrees):
-            self.trees.append(DecisionTree(trainingData[i]))
+            self.trees.append(DecisionTree(treeTrainingData[i]))
             self.trees[i].train()
 
     def classify(self, instance):
@@ -53,7 +55,7 @@ class RandomForest(object):
         '''
 
         if len(self.trees) == 0:
-            print("Forest not generated yet! Can't classify!")
+            raise AttributeError("Forest not generated yet! Can't classify!")
             return None
         else:
             predictions = []
@@ -77,10 +79,22 @@ class RandomForest(object):
 
             return highestVoted[0]
 
-    def evaluatePerformance(self, testingData):
+    def evaluatePerformance(self):
         '''
-        Classifies all the instances in 'testingData', compares results to the real class and generates performance statistics (accuracy, run time, etc.)
+        Classifies all the instances in the testing data, compares results to the real class and generates performance statistics
         '''
+        #Classifies the testing set
+        predictions = []
+        for instance in self.testingData.instances:
+            predictions.append(self.classify(instance))
+
+        #Measures accuracy
+        rightGuesses = 0
+        for prediction in predictions:
+            if prediction == self.testingData[self.className]:
+                rightGuesses += 1
+
+        print("Forest guessed right {}\% of the times.".format((rightGuesses/len(self.trainingData)*100)))
 
 
 class DecisionTree(object):

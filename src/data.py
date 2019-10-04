@@ -251,3 +251,5 @@ class Data(object):
             for j in range(len(self.instances)):    #Goes through every instance again
                 if self.instances[j] not in bootstraps[i][0]:   #Checks for instances that weren't picked for the training list
                     bootstraps[i][1].append(self.instances[j])  #Adds the instance to the testing list
+
+        return bootstraps

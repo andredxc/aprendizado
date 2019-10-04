@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from data import Data
-from decisionTree import DecisionNode, DecisionTree
+from decisionTree import DecisionNode, DecisionTree, RandomForest
 
 
 filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
@@ -8,6 +8,11 @@ className = 'Joga'
 data = Data(className)
 data.parseFromFile(filename)
 
+forest = RandomForest(data)
+forest.generateForest(5)
+forest.evaluatePerformance()
+
+'''
 tree = DecisionTree(data)
 tree.train()
 # tree.print()
@@ -29,3 +34,4 @@ if wrongGuesses > 0:
     raise SystemError("WRONG GUESSES: {}".format(wrongGuesses))
 else:
     print("SUCCESS, {} correct guesses".format(correctGuesses))
+'''
