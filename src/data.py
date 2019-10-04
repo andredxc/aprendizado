@@ -176,19 +176,22 @@ class Data(object):
 
     def generateBootstraps(self, k=1):
         '''
-        Randomly generates 'k' sets of instances with repetition for the training set and sets of instances that aren't in the training set for the testing set.
+        Generates 'k' stratfied sets of instances with repetition for the training set and sets of instances that aren't in the training set for the testing set.
         Returns the list of bootstraps.
         TODO: Stratification (ensure each fold has the same diversity)
         '''
         bootstraps = []
-        for i in range(k):
+        for i in range(k):  #For each bootstrap
             bootstraps.append( ([], []) )   #Adds a new bootstrap. Each bootstrap is a tuple with a list of training instances (index 0) and a list of testing instances (index 1)
 
-            for j in range(len(self.instances)):    #Bootstraps have the same number of instances as the original data set
-                bootstraps[i][0].append(self.instances[random.randint(0, len(self.instances)-1)]) #Adds a random instance to the current's bootstrap training list
+            classValues = self.listClassValues()
+            for value in classValues: #For each possible class value
+                matchingInstances = [instance for instance in self.instances if instance[self.className] == value] #Instances that have the matching value
 
-            for j in range(len(self.instances)): #Goes through every instance again
-                if self.instances[j] not in bootstraps[i][0]:    #Checks for instances that weren't picked for the training list
-                    bootstraps[i][1].append(self.instances[j])   #Adds the instance to the testing list
+                #Add to the bootstrap the same number of instances with that value that are in the data set
+                for j in range(len(matchingInstances)):
+                    bootstraps[i][0].append(matchingInstances[random.randint(0, len(matchingInstances)-1)])    #Adds a random instance from the matching instances to the training list
 
-        return bootstraps
+            for j in range(len(self.instances)):    #Goes through every instance again
+                if self.instances[j] not in bootstraps[i][0]:   #Checks for instances that weren't picked for the training list
+                    bootstraps[i][1].append(self.instances[j])  #Adds the instance to the testing list

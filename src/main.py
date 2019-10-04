@@ -12,7 +12,6 @@ tree = DecisionTree(data)
 tree.train()
 # tree.print()
 
-
 correctGuesses = 0
 wrongGuesses = 0
 for entry in data.instances:
