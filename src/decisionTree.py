@@ -4,23 +4,10 @@ from data import Data
 
 class RandomForest(object):
 
-    def __init__(self, data):
+    def __init__(self, data, testingData):
         self.trees = [] #List of trees
-
-        #Splits instances into folds
-        folds = data.generateStratifiedFolds(3)
-
-        #Adds the first fold as testing data
-        self.testingData = Data(data.className, data.numericAttr)
-        for instance in folds[0]:
-            self.testingData.addInstance(instance)
-
-        #Adds the other folds as training data
-        self.data = Data(data.className, data.numericAttr)
-        for fold in folds[1:]:
-            for instance in fold:
-                self.data.addInstance(instance)
-
+        self.data = data
+        self.testingData = testingData
 
     def generateForest(self, numTrees=5):
         '''
@@ -45,7 +32,7 @@ class RandomForest(object):
 
         #Creates each tree and trains them
         for i in range(numTrees):
-            self.trees.append(DecisionTree(treeTrainingData[i]))
+            self.trees.append(DecisionTree(treeTrainingData[i], treeTestingData[i]))
             self.trees[i].train()
 
     def classify(self, instance):
@@ -79,34 +66,32 @@ class RandomForest(object):
 
             return highestVoted[0]
 
-    def evaluatePerformance(self):
-        '''
-        Classifies all the instances in the testing data, compares results to the real class and generates performance statistics
-        '''
-        #Classifies the testing set
-        predictions = []
-        for instance in self.testingData.instances:
-            predictions.append(self.classify(instance))
+    def evaluateTreesPerformance(self):
+        treePerformances = []
+        for tree in self.trees:
+            predictions = []
+            for instance in tree.testingData.instances:
+                predictions.append(tree.classify(instance))
 
-        #Measures accuracy
-        correctClasses = []
-        for instance in self.testingData.instances:
-            correctClasses.append(instance[self.testingData.className])
+            correctClasses = []
+            for instance in tree.testingData.instances:
+                correctClasses.append(instance[tree.testingData.className])
 
-        rightGuesses = 0
-        for i in range(len(predictions)):
-            if predictions[i] == correctClasses[i]:
-                rightGuesses += 1
+            rightGuesses = 0
+            for i in range(len(predictions)):
+                if predictions[i] == correctClasses[i]:
+                    rightGuesses += 1
 
-        #print("Predictions: {}".format(predictions))
-        #print("Correct class: {}".format(correctClasses))
-        print("Forest guessed right {}% of the times.".format((rightGuesses/len(self.testingData.instances)*100)))
+            treePerformances.append(rightGuesses/len(tree.testingData.instances))
 
+        for i in range(len(treePerformances)):
+            print("    Tree {} got {:.2f}% of the instances right.".format(i, treePerformances[i]*100))
 
 class DecisionTree(object):
 
-    def __init__(self, data):
+    def __init__(self, data, testingData=[]):
         self.data = data
+        self.testingData = testingData
         self.root = None
 
     def train(self):
