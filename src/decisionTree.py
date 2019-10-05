@@ -32,7 +32,8 @@ class RandomForest(object):
 
         #Creates each tree and trains them
         for i in range(numTrees):
-            self.trees.append(DecisionTree(treeTrainingData[i], treeTestingData[i]))
+            self.trees.append(DecisionTree(data=treeTrainingData[i],
+                                           testingData=treeTestingData[i]))
             self.trees[i].train()
 
     def classify(self, instance):
@@ -87,6 +88,7 @@ class RandomForest(object):
         for i in range(len(treePerformances)):
             print("    Tree {} got {:.2f}% of the instances right.".format(i, treePerformances[i]*100))
 
+
 class DecisionTree(object):
 
     def __init__(self, data, m=0, testingData=[]):
@@ -118,7 +120,7 @@ class DecisionTree(object):
             # Split data for children nodes
             splitDic = curNode.splitData()
             for keyName in splitDic:
-                print("Size of attribute list: {}".format(len(splitDic[keyName].instances)))
+                # print("Size of attribute list: {}".format(len(splitDic[keyName].instances)))
                 curNode.children[keyName] = self.generateNode(splitDic[keyName])
 
             return curNode
@@ -180,7 +182,7 @@ class DecisionNode(object):
         else:
             self.m = m if m <= len(self.data.instances) else len(self.data.instances)
 
-        print("Node initialized with m = {} and {} instances".format(self.m, len(self.data.instances)))
+        # print("Node initialized with m = {} and {} instances".format(self.m, len(self.data.instances)))
 
     def __repr__(self):
         return "<DecisionNode {}>".format(self.attribute)
@@ -268,8 +270,8 @@ class DecisionNode(object):
             for value in self.data.listAttributeValues(self.attribute):
                 self.children[value] = None
 
-            print("Attribute for DecisionNode: {0} with {1:.3f} bits".\
-                format(highest[0], highest[1]))
+            # print("Attribute for DecisionNode: {0} with {1:.3f} bits".\
+            #     format(highest[0], highest[1]))
 
     def splitData(self):
         """

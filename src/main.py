@@ -45,22 +45,20 @@ def evaluatePerformance(data):
     print("----------")
 
 
+# -------------------------------------------------------------------
 filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
 className = 'Joga'
 data = Data(className)
 data.parseFromFile(filename)
-
-evaluatePerformance(data)
-
-'''
-forest = RandomForest(data)
-forest.generateForest(5)
-forest.evaluateTreesPerformance()
-
 tree = DecisionTree(data)
 tree.train()
 # tree.print()
+# Tempo;Temperatura;Umidade;Ventoso;Joga
+# Ensolarado;Quente;Alta;Falso;Nao
+entry = {'Tempo': 'Ensolarado', 'Temperatura': 'Quente', 'Umidade': 'Alta', 'Ventoso': 'Falso'}
+print("Classificação: {}".format(tree.classify(entry)))
 
+'''
 correctGuesses = 0
 wrongGuesses = 0
 for entry in data.instances:
@@ -78,4 +76,9 @@ if wrongGuesses > 0:
     raise SystemError("WRONG GUESSES: {}".format(wrongGuesses))
 else:
     print("SUCCESS, {} correct guesses".format(correctGuesses))
+
+evaluatePerformance(data)
+forest = RandomForest(data)
+forest.generateForest(5)
+forest.evaluateTreesPerformance()
 '''
