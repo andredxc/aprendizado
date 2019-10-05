@@ -1,16 +1,102 @@
 from math import log, sqrt
 from random import shuffle
+from data import Data
 
+class RandomForest(object):
+
+    def __init__(self, data, testingData):
+        self.trees = [] #List of trees
+        self.data = data
+        self.testingData = testingData
+
+    def generateForest(self, numTrees=5):
+        '''
+        Generates 'numTrees' random trees trained from 'data'
+        '''
+        #Generates a bootstrap for each tree from the training data
+        bootstraps = self.data.generateStratifiedBootstraps(numTrees)
+
+        #Creates <Data> objects for each training set in the bootstraps
+        treeTrainingData = []
+        for i in range(numTrees):
+            treeTrainingData.append(Data(self.data.className, self.data.numericAttr))
+            for instance in bootstraps[i][0]:
+                treeTrainingData[i].addInstance(instance)
+
+        #Creates <Data> objects for each testing set in the bootstraps
+        treeTestingData = []
+        for i in range(numTrees):
+            treeTestingData.append(Data(self.data.className, self.data.numericAttr))
+            for instance in bootstraps[i][1]:
+                treeTestingData[i].addInstance(instance)
+
+        #Creates each tree and trains them
+        for i in range(numTrees):
+            self.trees.append(DecisionTree(treeTrainingData[i], treeTestingData[i]))
+            self.trees[i].train()
+
+    def classify(self, instance):
+        '''
+        Classifies an instance.
+        Returns the predicted class.
+        '''
+
+        if len(self.trees) == 0:
+            raise AttributeError("Forest not generated yet! Can't classify!")
+            return None
+        else:
+            predictions = []
+            #Gathers the predictions of each tree
+            for tree in self.trees:
+                predictions.append(tree.classify(instance))
+
+            #Builds a dictionary with the predictions and the amount of each one
+            results = {}
+            for prediction in predictions:
+                if prediction not in results.keys():    #New entry
+                    results[prediction] = 0
+
+                results[prediction] += 1
+
+            highestVoted = ("", 0)
+            #Selects the result with most votes
+            for result in results.keys():
+                if results[result] > highestVoted[1]:
+                    highestVoted = (result, results[result])
+
+            return highestVoted[0]
+
+    def evaluateTreesPerformance(self):
+        treePerformances = []
+        for tree in self.trees:
+            predictions = []
+            for instance in tree.testingData.instances:
+                predictions.append(tree.classify(instance))
+
+            correctClasses = []
+            for instance in tree.testingData.instances:
+                correctClasses.append(instance[tree.testingData.className])
+
+            rightGuesses = 0
+            for i in range(len(predictions)):
+                if predictions[i] == correctClasses[i]:
+                    rightGuesses += 1
+
+            treePerformances.append(rightGuesses/len(tree.testingData.instances))
+
+        for i in range(len(treePerformances)):
+            print("    Tree {} got {:.2f}% of the instances right.".format(i, treePerformances[i]*100))
 
 class DecisionTree(object):
 
-    def __init__(self, data, m=0):
+    def __init__(self, data, m=0, testingData=[]):
         """
         :param data: dataset used by the root node
         :param m: size of the sample of features considered for the node
                   attribute
         """
         self.data = data
+        self.testingData = testingData
         self.root = None
         self.m = m
 
