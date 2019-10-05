@@ -5,7 +5,10 @@ from decisionTree import DecisionNode, DecisionTree, RandomForest
 def evaluatePerformance(data):
     #Splits instances into folds
     folds = data.generateStratifiedFolds(3)
+
     allPerformances = []
+    allPrecisions = []
+    allRecalls = []
     #Repeats using each fold as testing data once
     for iteration in range(len(folds)):
         #Adds one fold as testing data
@@ -29,19 +32,52 @@ def evaluatePerformance(data):
         for instance in forest.testingData.instances:
             predictions.append(forest.classify(instance))
 
-        rightGuesses = 0
+
+        #Analizes results
+        positiveClasses = ["Sim"]   #MUST BE SET MANUALLY FOR EACH DATASET
+        negativeClasses = ["Nao"]   #MUST BE SET MANUALLY FOR EACH DATASET
+        truePositives = 0
+        falsePositives = 0
+        trueNegatives = 0
+        falseNegatives = 0
         for i in range(len(predictions)):
-            if predictions[i] == forest.testingData.instances[i][forest.testingData.className]:
-                rightGuesses += 1
+            if predictions[i] in positiveClasses:   #Predicted positive
+                if forest.testingData.instances[i][forest.testingData.className] in positiveClasses:    #Supposed to be positive
+                    truePositives += 1
+                if forest.testingData.instances[i][forest.testingData.className] in negativeClasses:    #Supposed to be negative
+                    falsePositives +=1
+            if predictions[i] in negativeClasses:   #Predicted negative
+                if forest.testingData.instances[i][forest.testingData.className] in negativeClasses:    #Supposed to be negative
+                    trueNegatives +=1
+                if forest.testingData.instances[i][forest.testingData.className] in positiveClasses:    #Supposed to be positive
+                    falseNegatives += 1
+
+        performance = (truePositives+trueNegatives)/len(predictions)    #Right guesses
+        precision = truePositives / (truePositives + falsePositives)    #Right guesses from instances guessed positive
+        recall = truePositives / (truePositives + falseNegatives)   #Right guesses from instances that were supposed to be positive
+
 
         print("----- Forest {} -----".format(iteration))
+        print(predictions)
+        for instance in forest.testingData.instances:
+            print(instance)
+        print("TP: {}, FP: {}, TN: {}, FN: {}".format(truePositives, falsePositives, trueNegatives, falseNegatives))
         forest.evaluateTreesPerformance()
-        print("Forest performance: {:.2f}%".format((rightGuesses/len(predictions))*100))
+        print("Forest performance: {:.2f}% of guesses (precision: {:.2f}% / recall: {:.2f}%)".format(performance*100, precision*100, recall*100))
 
-        allPerformances.append(rightGuesses/len(predictions))   #Adds this iteration's performance to the list
+        allPerformances.append(performance)   #Adds this iteration's performance to the list
+        allPrecisions.append(precision)   #Adds this iteration's precision to the list
+        allRecalls.append(recall)   #Adds this iteration's recall to the list
+
+    avgPerformance = sum(allPerformances)/len(allPerformances)
+    avgPrecision = sum(allPrecisions)/len(allPrecisions)
+    avgRecall = sum(allRecalls)/len(allRecalls)
+
+    f1 = (2*avgPrecision*avgRecall) / (avgPrecision+avgRecall)
 
     print("----------")
-    print("Model's average performance: {:.2f}%".format(sum(allPerformances)/len(allPerformances)))
+    print("Model's average performance: {:.2f}% (precision: {:.2f}% / recall: {:.2f}%)".format(avgPerformance*100, avgPrecision*100, avgRecall*100))
+    print("F1-measure from averages: {:.2f}%".format(f1*100))
     print("----------")
 
 
@@ -50,38 +86,10 @@ filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
 className = 'Joga'
 data = Data(className)
 data.parseFromFile(filename)
-tree = DecisionTree(data)
-tree.train()
-tree.print()
-
-# evaluatePerformance(data)
-# Tempo;Temperatura;Umidade;Ventoso;Joga
-# Ensolarado;Quente;Alta;Falso;Nao
-#entry = {'Tempo': 'Ensolarado', 'Temperatura': 'Quente', 'Umidade': 'Alta', 'Ventoso': 'Falso'}
-#print("Classificação: {}".format(tree.classify(entry)))
-
-# correctGuesses = 0
-# wrongGuesses = 0
-# for entry in data.instances:
-#     right = entry[data.className]
-#     guess = tree.classify(entry)
-
-#     if right == guess:
-#         correctGuesses += 1
-#     else:
-#         wrongGuesses += 1
-
-
-# if wrongGuesses > 0:
-#     print("Number of correct guesses: {}".format(correctGuesses))
-#     raise SystemError("WRONG GUESSES: {}".format(wrongGuesses))
-# else:
-#     print("SUCCESS, {} correct guesses".format(correctGuesses))
-
 
 evaluatePerformance(data)
-forest = RandomForest(data)
-forest.generateForest(5)
-forest.evaluateTreesPerformance()
+# forest = RandomForest(data)
+# forest.generateForest(5)
+# forest.evaluateTreesPerformance()
 
 
