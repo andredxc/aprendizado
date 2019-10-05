@@ -1,5 +1,5 @@
 from math import log, sqrt
-from random import shuffle
+from random import shuffle, choice
 from data import Data
 
 class RandomForest(object):
@@ -169,8 +169,18 @@ class DecisionTree(object):
             # Leaf node
             return node.guess
         else:
-            print("node.attribute: {}, instance: {}".format(node.attribute, instance))
-            nextNode = node.children[instance[node.attribute]]
+            # print("node.attribute: {}, instance: {}\nnode.children: {}".format(node.attribute, instance, node.children))
+
+            if instance[node.attribute] in node.children.keys():
+                # Value is known, follow the tree
+                nextNode = node.children[instance[node.attribute]]
+                
+            else:
+                # Value is not known, guess
+                keyName = choice(list(node.children.keys()))
+                nextNode = node.children[keyName]
+                             
+
             return self.classify(instance, node=nextNode)
 
 
