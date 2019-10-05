@@ -4,9 +4,15 @@ from random import shuffle
 
 class DecisionTree(object):
 
-    def __init__(self, data):
+    def __init__(self, data, m=0):
+        """
+        :param data: dataset used by the root node
+        :param m: size of the sample of features considered for the node
+                  attribute
+        """
         self.data = data
         self.root = None
+        self.m = m
 
     def train(self):
 
@@ -14,18 +20,19 @@ class DecisionTree(object):
 
     def generateNode(self, data):
         """
-        Recursive function which creates the DecisionNode for a given data along with its 
+        Recursive function which creates the DecisionNode for a given data along with its
         children nodes.
         """
-        curNode = DecisionNode(data)
+        curNode = DecisionNode(data, self.m)
         curNode.evaluate()
         if len(curNode.children) == 0:
             # Leaf node
             return curNode
         else:
-            # Split data for children nodes    
+            # Split data for children nodes
             splitDic = curNode.splitData()
             for keyName in splitDic:
+                print("Size of attribute list: {}".format(len(splitDic[keyName].instances)))
                 curNode.children[keyName] = self.generateNode(splitDic[keyName])
 
             return curNode
@@ -34,7 +41,7 @@ class DecisionTree(object):
 
         if not start:
             start = self.root
-        
+
         # Recursively print nodes
         s = "   "*indent
         if len(start.children) == 0:
@@ -68,17 +75,26 @@ class DecisionTree(object):
 class DecisionNode(object):
 
     def __init__(self, data, m=0):
+        """
+        :param data: dataset used by the node
+        :param m: size of the sample of features considered for the node
+                  attribute
+        """
+        # dataset
         self.data = data
+        # attribute selected as a division criteria for this node
         self.attribute = None
+        # dic with values as keys and DecisionNodes as values
         self.children = {}
+        # For a leaf node, value guessed as output
         self.guess = None
         # Number of random features to be considered when splitting the node
         if m == 0:
             self.m = int(sqrt(len(self.data.attributes)))
         else:
-            self.m = m if m <= len(self.data.instances) else len(self.data.instances)       
+            self.m = m if m <= len(self.data.instances) else len(self.data.instances)
 
-        print("Node initialized with m = {} and attributes: \n{}".format(self.m, self.data.attributes))
+        print("Node initialized with m = {} and {} instances".format(self.m, len(self.data.instances)))
 
     def __repr__(self):
         return "<DecisionNode {}>".format(self.attribute)
@@ -131,7 +147,7 @@ class DecisionNode(object):
 
     def infoGain(self, attrName):
         """
-        Calculates the information gain for a attribute, which is defined as the class 
+        Calculates the information gain for a attribute, which is defined as the class
         information - attribute information.
         """
         infoGain = self.classInfo() - self.attributeInfo(attrName)
@@ -147,20 +163,21 @@ class DecisionNode(object):
             self.guess = self.data.instances[0][self.data.className]
             # print("Leaf node with guess: {}".format(self.guess))
         else:
-            # Find the attribute with the highest information
-            highest = ("", 0)
             # Use a sample of m random attributes
             attrList = self.data.attributes
             shuffle(attrList)
+            if len(attrList) == 0:
+                raise SystemError("Attribute list is empty")
             # print("Selecting attribute amongst: {}".format(attrList[0:self.m]))
+            # Find the attribute with the highest amount of information
+            highest = ("", 0)
             for attr in attrList[0:self.m]:
                 infoGain = self.infoGain(attr)
-                if infoGain > highest[1]:
-                    # Found better attribute
+                if infoGain > highest[1] or highest[0] == "":
+                    # Found better attribute or initialzes
                     highest = (attr, infoGain)
 
             self.attribute = highest[0]
-
             # Initialize the children dictionary
             for value in self.data.listAttributeValues(self.attribute):
                 self.children[value] = None
@@ -178,9 +195,4 @@ class DecisionNode(object):
 
         # Split dataset
         splitDic = self.data.split(self.attribute)
-
-        # for key in splitDic.keys():
-        #     print("Dictionaries for key: {}".format(key))
-        #     [print(x) for x in splitDic[key].instances]
-
         return splitDic
