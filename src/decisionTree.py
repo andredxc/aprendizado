@@ -89,12 +89,18 @@ class RandomForest(object):
             predictions.append(self.classify(instance))
 
         #Measures accuracy
+        correctClasses = []
+        for instance in self.testingData.instances:
+            correctClasses.append(instance[self.testingData.className])
+
         rightGuesses = 0
-        for prediction in predictions:
-            if prediction == self.testingData[self.className]:
+        for i in range(len(predictions)):
+            if predictions[i] == correctClasses[i]:
                 rightGuesses += 1
 
-        print("Forest guessed right {}\% of the times.".format((rightGuesses/len(self.trainingData)*100)))
+        #print("Predictions: {}".format(predictions))
+        #print("Correct class: {}".format(correctClasses))
+        print("Forest guessed right {}% of the times.".format((rightGuesses/len(self.testingData.instances)*100)))
 
 
 class DecisionTree(object):
