@@ -134,6 +134,28 @@ class Data(object):
 
         return True
 
+    def mostFrequentClass(self):
+        """
+        Returns the most frequent value for the dataset class.
+        """
+        if len(self.instances) == 0:
+            raise ValueError("Data object has no instances, cannot find most frequent\
+                             class")
+        # Count the number of occurances
+        countDic = {}
+        for entry in self.instances:
+            if entry[self.className] in countDic.keys():
+                countDic[entry[self.className]] += 1
+            else:
+                countDic[entry[self.className]] = 1
+        # Find highest
+        highest = ("", 0)
+        for key in countDic:
+            if countDic[key] > highest[1]:
+                highest = (key, countDic[key])
+        
+        return highest[0]
+
     def split(self, attrName):
         """
         Splits the data into however Data objecst is dictated by the number of values for 
@@ -253,3 +275,10 @@ class Data(object):
                     bootstraps[i][1].append(self.instances[j])  #Adds the instance to the testing list
 
         return bootstraps
+
+    def isEmpty(self):
+
+        if len(self.instances) == 0:
+            return True
+        else:
+            return False

@@ -52,35 +52,36 @@ data = Data(className)
 data.parseFromFile(filename)
 tree = DecisionTree(data)
 tree.train()
+tree.print()
 
-evaluatePerformance(data)
-# tree.print()
+# evaluatePerformance(data)
 # Tempo;Temperatura;Umidade;Ventoso;Joga
 # Ensolarado;Quente;Alta;Falso;Nao
 #entry = {'Tempo': 'Ensolarado', 'Temperatura': 'Quente', 'Umidade': 'Alta', 'Ventoso': 'Falso'}
 #print("Classificação: {}".format(tree.classify(entry)))
 
-'''
-correctGuesses = 0
-wrongGuesses = 0
-for entry in data.instances:
-    right = entry[data.className]
-    guess = tree.classify(entry)
+# correctGuesses = 0
+# wrongGuesses = 0
+# for entry in data.instances:
+#     right = entry[data.className]
+#     guess = tree.classify(entry)
 
-    if right == guess:
-        correctGuesses += 1
-    else:
-        wrongGuesses += 1
+#     if right == guess:
+#         correctGuesses += 1
+#     else:
+#         wrongGuesses += 1
 
 
-if wrongGuesses > 0:
-    print("Number of correct guesses: {}".format(correctGuesses))
-    raise SystemError("WRONG GUESSES: {}".format(wrongGuesses))
-else:
-    print("SUCCESS, {} correct guesses".format(correctGuesses))
+# if wrongGuesses > 0:
+#     print("Number of correct guesses: {}".format(correctGuesses))
+#     raise SystemError("WRONG GUESSES: {}".format(wrongGuesses))
+# else:
+#     print("SUCCESS, {} correct guesses".format(correctGuesses))
+
 
 evaluatePerformance(data)
 forest = RandomForest(data)
 forest.generateForest(5)
 forest.evaluateTreesPerformance()
-'''
+
+

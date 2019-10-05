@@ -33,7 +33,7 @@ class RandomForest(object):
         #Creates each tree and trains them
         for i in range(numTrees):
             self.trees.append(DecisionTree(data=treeTrainingData[i],
-                                           testingData=treeTestingData[i]))
+                                           testingData=treeTestingData[i], m=4))
             self.trees[i].train()
 
     def classify(self, instance):
@@ -102,28 +102,42 @@ class DecisionTree(object):
         self.root = None
         self.m = m
 
-    def train(self):
-
-        self.root = self.generateNode(self.data)
-
-    def generateNode(self, data):
+    def train(self, data=None):
         """
-        Recursive function which creates the DecisionNode for a given data along with its
-        children nodes.
+        Recursively creates nodes for a new tree.
         """
-        curNode = DecisionNode(data, self.m)
-        curNode.evaluate()
-        if len(curNode.children) == 0:
+        isRootNode = False
+        if not data:
+            # Root node
+            isRootNode = True
+            data = self.data
+
+        if data.uniformClass() or len(data.attributes) == 0:
             # Leaf node
-            return curNode
+            curNode = DecisionNode(leaf=True, guess=data.mostFrequentClass())
+        
         else:
-            # Split data for children nodes
-            splitDic = curNode.splitData()
-            for keyName in splitDic:
-                # print("Size of attribute list: {}".format(len(splitDic[keyName].instances)))
-                curNode.children[keyName] = self.generateNode(splitDic[keyName])
+            # Not a leaf node, continue recursion
+            curNode = DecisionNode(data=data, m=self.m)
+            curNode.evaluate()
+            
+            # Split the data amongst the possible values for curNode`s attribute
+            splitDic = data.split(curNode.attribute)
 
-            return curNode
+            # Create new nodes for each data output
+            for key in splitDic:
+
+                if splitDic[key].isEmpty():
+                    # Empty data, create leaf node
+                    curNode = DecisionNode(leaf=True, guess=data.mostFrequentClass())
+                else:
+                    # Create a regular node
+                    curNode.children[key] = self.train(data=splitDic[key])
+
+        if isRootNode:
+            self.root = curNode
+
+        return curNode
 
     def print(self, valName='', indent=0, start=None):
 
@@ -132,14 +146,13 @@ class DecisionTree(object):
 
         # Recursively print nodes
         s = "   "*indent
-        if len(start.children) == 0:
+        if start.leaf:
             print("{}- {} -> {}".format(s, valName, start.guess))
         else:
             print("{}- {} -> {}".format(s, valName, start.attribute))
 
         for key in start.children:
-            if start.children[key]:
-                self.print(key, indent+1, start.children[key])
+            self.print(key, indent+1, start.children[key])
 
     def classify(self, instance, node=None):
         """
@@ -152,21 +165,23 @@ class DecisionTree(object):
         if not node:
             node = self.root
 
-        if len(node.children) == 0:
+        if node.leaf:
             # Leaf node
             return node.guess
         else:
+            print("node.attribute: {}, instance: {}".format(node.attribute, instance))
             nextNode = node.children[instance[node.attribute]]
             return self.classify(instance, node=nextNode)
 
 
 class DecisionNode(object):
 
-    def __init__(self, data, m=0):
+    def __init__(self, data=None, m=0, guess=None, leaf=False):
         """
         :param data: dataset used by the node
         :param m: size of the sample of features considered for the node
                   attribute
+        :param guess: class guess for a leaf node
         """
         # dataset
         self.data = data
@@ -174,15 +189,24 @@ class DecisionNode(object):
         self.attribute = None
         # dic with values as keys and DecisionNodes as values
         self.children = {}
-        # For a leaf node, value guessed as output
-        self.guess = None
-        # Number of random features to be considered when splitting the node
-        if m == 0:
-            self.m = int(sqrt(len(self.data.attributes)))
-        else:
-            self.m = m if m <= len(self.data.instances) else len(self.data.instances)
+        self.guess = guess
+        self.leaf = leaf
+        # Validate
+        if self.leaf:
+            if self.data:
+                print("Possible implementation error passing data to a leaf decision\
+                      node")
+            if not self.guess:
+                raise ValueError("Cannot initialize leaf node without guess")
 
-        # print("Node initialized with m = {} and {} instances".format(self.m, len(self.data.instances)))
+            # print("Created leaf node with guess: {}".format(self.guess))
+        else:
+            if self.guess:
+                raise ValueError("Cannot initialize standard node with guess")
+            if m <= 0:
+                self.m = int(sqrt(len(self.data.attributes)))
+            else:
+                self.m = m if m <= len(self.data.instances) else len(self.data.instances)
 
     def __repr__(self):
         return "<DecisionNode {}>".format(self.attribute)
@@ -246,32 +270,33 @@ class DecisionNode(object):
         Set the attribute variable to whichever attribute provides the most
         information and initializes the children dictionary.
         """
-        if self.data.uniformClass():
-            # Node is a leaf
-            self.guess = self.data.instances[0][self.data.className]
-            # print("Leaf node with guess: {}".format(self.guess))
-        else:
-            # Use a sample of m random attributes
-            attrList = self.data.attributes
-            shuffle(attrList)
-            if len(attrList) == 0:
-                raise SystemError("Attribute list is empty")
-            # print("Selecting attribute amongst: {}".format(attrList[0:self.m]))
-            # Find the attribute with the highest amount of information
-            highest = ("", 0)
-            for attr in attrList[0:self.m]:
-                infoGain = self.infoGain(attr)
-                if infoGain > highest[1] or highest[0] == "":
-                    # Found better attribute or initialzes
-                    highest = (attr, infoGain)
+        if self.leaf:
+            if not self.guess:
+                raise SystemError("Cannot evaluate leaf node with no guess")
+            return
 
-            self.attribute = highest[0]
-            # Initialize the children dictionary
-            for value in self.data.listAttributeValues(self.attribute):
-                self.children[value] = None
+        # Use a sample of m random attributes
+        attrList = self.data.attributes
+        shuffle(attrList)
+        if len(attrList) == 0:
+            raise SystemError("Attribute list is empty")
 
-            # print("Attribute for DecisionNode: {0} with {1:.3f} bits".\
-            #     format(highest[0], highest[1]))
+        # print("Selecting attribute amongst: {}".format(attrList[0:self.m]))
+        # Find the attribute with the highest amount of information
+        highest = ("", 0)
+        for attr in attrList[0:self.m]:
+            infoGain = self.infoGain(attr)
+            if infoGain > highest[1] or highest[0] == "":
+                # Found better attribute or initialzes
+                highest = (attr, infoGain)
+
+        self.attribute = highest[0]
+
+        # Initialize the children dictionary
+        for value in self.data.listAttributeValues(self.attribute):
+            self.children[value] = None
+
+        # print("Selected attr {} with {} bits".format(self.attribute, highest[1]))
 
     def splitData(self):
         """
