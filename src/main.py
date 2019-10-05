@@ -36,12 +36,12 @@ def evaluatePerformance(data):
 
         print("----- Forest {} -----".format(iteration))
         forest.evaluateTreesPerformance()
-        print("Forest performance: {:.2f}".format((rightGuesses/len(predictions))*100))
+        print("Forest performance: {:.2f}%".format((rightGuesses/len(predictions))*100))
 
         allPerformances.append(rightGuesses/len(predictions))   #Adds this iteration's performance to the list
 
     print("----------")
-    print("Model's average performance: {:.2f}".format(sum(allPerformances)/len(allPerformances)))
+    print("Model's average performance: {:.2f}%".format(sum(allPerformances)/len(allPerformances)))
     print("----------")
 
 
@@ -52,11 +52,13 @@ data = Data(className)
 data.parseFromFile(filename)
 tree = DecisionTree(data)
 tree.train()
+
+evaluatePerformance(data)
 # tree.print()
 # Tempo;Temperatura;Umidade;Ventoso;Joga
 # Ensolarado;Quente;Alta;Falso;Nao
-entry = {'Tempo': 'Ensolarado', 'Temperatura': 'Quente', 'Umidade': 'Alta', 'Ventoso': 'Falso'}
-print("Classificação: {}".format(tree.classify(entry)))
+#entry = {'Tempo': 'Ensolarado', 'Temperatura': 'Quente', 'Umidade': 'Alta', 'Ventoso': 'Falso'}
+#print("Classificação: {}".format(tree.classify(entry)))
 
 '''
 correctGuesses = 0
