@@ -10,6 +10,13 @@ class Data(object):
         self.keys = []
         self.instances = []
         self.attributes = []
+        if isinstance(numeric, list):
+            self.numericAttr = numeric
+        elif isinstance(numeric, str):
+            self.numericAttr = [numeric]
+        else:
+            raise ValueError("Attribute 'numeric' should be a list or str")
+
         self.numericAttr = numeric
 
     def __repr__(self):
@@ -38,11 +45,6 @@ class Data(object):
         """
         if attr not in self.keys:
             raise ValueError("Attr '{}' does not exist in the dictionary".format(attr))
-
-        attrDic = {}
-        classDic = {}
-        colFound = False
-        rowFound = False
 
         # Matrix format
         # [[0, 'Ensolarado', 'Nublado', 'Chuvoso'],
@@ -94,6 +96,63 @@ class Data(object):
         m.append(sumRow)
         return m
 
+    def summarizeNumeric(self, attr):
+        """
+        Returns a matrix which has formatted useful data used to calculate the amount of 
+        information for a numeric attribute, considering it will be divided into two 
+        possible values (attr <= mean and attr > mean).
+        """
+        if attr not in self.keys:
+            raise ValueError("Attr '{}' does not exist in the dictionary".format(attr))
+        
+        if attr not in self.numericAttr:
+            raise ValueError("Attr {} is not numeric".format(attr))        
+
+        # Matrix format
+        # [[0, '<= mean', '> mean'],
+        #  ['Falso', 0, 0],
+        #  ['Verdadeiro', 0, 0],
+        #  [0, sum, sum]]
+
+        # Calculate the mean value
+        sum = 0
+        for entry in self.instances:
+            sum += float(entry[attr])
+        mean = sum/float(len(self.instances))
+
+        # Initialize the matrix
+        m = [[0, 'lower', 'higher']]
+        for val in self.listClassValues():
+            newRow = [val, 0, 0]
+            m.append(newRow)
+
+        # Summarize every instance
+        for entry in self.instances:
+            # Calculate matrix positions
+            rowInd = -1
+            colInd = 1 if float(entry[attr]) <= mean else 2
+            # Iterate over the rows (classes)
+            for row in range(1, len(m)):
+                if m[row][0] == entry[self.className]:
+                    # Found row
+                    rowInd = row
+
+            if rowInd >= 0:
+                # Position was Found
+                m[rowInd][colInd] += 1
+            else:
+                raise ValueError("Error finding position in matrix: row: {}".
+                                 format(rowInd))
+
+        # Calculate the number of occurances for each value
+        sumRow = [0]*len(m[0])
+        for row in range(1, len(m)):
+            for col in range(1, len(m[0])):
+                sumRow[col] += m[row][col]
+        
+        m.append(sumRow)
+        return m
+
     def listAttributeValues(self, attr):
         """
         Returns a list contaning all the possible value labels for a given
@@ -115,9 +174,10 @@ class Data(object):
                 classList.append(row[self.className])
         return classList
 
-    def parseFromFile(self, filename):
+    def parseFromFile(self, filename, delimiter, quotechar):
 
-        reader = csv.DictReader(open(filename, mode='r'), delimiter=';')
+        reader = csv.DictReader(open(filename, mode='r'), delimiter=delimiter, 
+                                quotechar=quotechar)
         for row in reader:
             # row is an OrderedDict by default
             self.addInstance(dict(row))
@@ -156,6 +216,20 @@ class Data(object):
         
         return highest[0]
 
+    def calculateMean(self, attrName):
+        """
+        Calculates the mean value for a numeric attribute.
+        """
+        if not self.isNumeric(attrName):
+            raise SystemError("Attribute '{}' is not numeric.".format(attrName))
+            
+        # Calculate the mean value
+        sum = 0
+        for entry in self.instances:
+            sum += float(entry[attrName])
+        mean = sum/float(len(self.instances))
+        return mean
+
     def split(self, attrName):
         """
         Splits the data into however Data objecst is dictated by the number of values for 
@@ -164,15 +238,31 @@ class Data(object):
         :returns: dictionary containing the values as keys and Data instances as values
         """
         splitDic = {}
-        for entry in self.instances:
-            newEntry = entry.copy()
-            del newEntry[attrName]
-            if entry[attrName] not in splitDic.keys():
-                # Create a new Data instance
-                newData = Data(self.className)
-                splitDic[entry[attrName]] = newData
+        if self.isNumeric(attrName):
+            # Split for numeric values
+            splitDic[0] = Data(self.className, numeric=self.numericAttr)
+            splitDic[1] = Data(self.className, numeric=self.numericAttr)
+            mean = self.calculateMean(attrName)
+            for entry in self.instances:
+                newEntry = entry.copy()
+                del newEntry[attrName]
+                if float(entry[attrName]) <= mean:
+                    splitDic[0].addInstance(newEntry)
+                else:
+                    splitDic[1].addInstance(newEntry)
+        else:
+            # Split for categoric values
+            for entry in self.instances:
+                newEntry = entry.copy()
+                del newEntry[attrName]
+                if entry[attrName] not in splitDic.keys():
+                    # Create a new Data instance
+                    newData = Data(self.className, numeric=self.numericAttr)
+                    splitDic[entry[attrName]] = newData
 
-            splitDic[entry[attrName]].addInstance(newEntry)
+                splitDic[entry[attrName]].addInstance(newEntry)
+
+
 
         return splitDic
 
@@ -279,6 +369,13 @@ class Data(object):
     def isEmpty(self):
 
         if len(self.instances) == 0:
+            return True
+        else:
+            return False
+
+    def isNumeric(self, attrName):
+        
+        if attrName in self.numericAttr:
             return True
         else:
             return False

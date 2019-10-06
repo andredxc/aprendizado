@@ -46,13 +46,54 @@ def evaluatePerformance(data):
 
 
 # -------------------------------------------------------------------
-filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
-className = 'Joga'
-data = Data(className)
-data.parseFromFile(filename)
-tree = DecisionTree(data)
+# Credit g
+filename = '../data/credit-g.csv'
+className = 'class'
+data = Data(className, numeric=['duration', 'credit_amount', 'installment_commitment', 
+                                'residence_since', 'age', 'existing_credits', 
+                                'num_dependents'])
+data.parseFromFile(filename, delimiter=',', quotechar='"')
+
+
+# for key in data.instances[0]:
+#     if key == data.className:
+#         print("\t{}: {} (CLASS)".format(key, data.instances[0][key]))
+#     elif data.isNumeric(key):
+#         print("{}: {} (numeric)".format(key, data.instances[0][key]))
+#     else:
+#         print("{}: {} (categoric)".format(key, data.instances[0][key]))
+
+
+
+tree = DecisionTree(data, m=15)
 tree.train()
-tree.print()
+# tree.print()
+
+correctGuesses = 0
+wrongGuesses = 0
+for entry in data.instances:
+    right = entry[data.className]
+    guess = tree.classify(entry)
+
+    if right == guess:
+        correctGuesses += 1
+    else:
+        wrongGuesses += 1
+
+print("CORRECT: {correct}, WRONG: {wrong}".format(correct=correctGuesses, 
+                                                  wrong=wrongGuesses))
+
+
+
+
+# Exemplo
+# filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
+# className = 'Joga'
+# data = Data(className, numeric=["Numero"])
+# data.parseFromFile(filename)
+# tree = DecisionTree(data)
+# tree.train()
+# tree.print()
 
 # evaluatePerformance(data)
 # Tempo;Temperatura;Umidade;Ventoso;Joga
@@ -79,9 +120,9 @@ tree.print()
 #     print("SUCCESS, {} correct guesses".format(correctGuesses))
 
 
-evaluatePerformance(data)
-forest = RandomForest(data)
-forest.generateForest(5)
-forest.evaluateTreesPerformance()
+# evaluatePerformance(data)
+# forest = RandomForest(data)
+# forest.generateForest(5)
+# forest.evaluateTreesPerformance()
 
 

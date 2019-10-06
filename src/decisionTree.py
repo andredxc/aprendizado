@@ -149,7 +149,10 @@ class DecisionTree(object):
         if start.leaf:
             print("{}- {} -> {}".format(s, valName, start.guess))
         else:
-            print("{}- {} -> {}".format(s, valName, start.attribute))
+            if start.numeric:
+                print("{}- {} -> {} ({})".format(s, valName, start.attribute, start.numeric))
+            else:
+                print("{}- {} -> {}".format(s, valName, start.attribute))
 
         for key in start.children:
             self.print(key, indent+1, start.children[key])
@@ -170,17 +173,23 @@ class DecisionTree(object):
             return node.guess
         else:
             # print("node.attribute: {}, instance: {}\nnode.children: {}".format(node.attribute, instance, node.children))
-
-            if instance[node.attribute] in node.children.keys():
-                # Value is known, follow the tree
-                nextNode = node.children[instance[node.attribute]]
-                
+            if node.data.isNumeric(node.attribute):
+                # Numeric attributes
+                if float(instance[node.attribute]) <= node.numeric:
+                    nextNode = node.children[0]
+                else:
+                    nextNode = node.children[1]
             else:
-                # Value is not known, guess
-                keyName = choice(list(node.children.keys()))
-                nextNode = node.children[keyName]
-                             
-
+                # Categoric attributes
+                if instance[node.attribute] in node.children.keys():
+                    # Value is known, follow the tree
+                    nextNode = node.children[instance[node.attribute]]
+                    
+                else:
+                    # Value is not known, guess
+                    keyName = choice(list(node.children.keys()))
+                    nextNode = node.children[keyName]
+                                
             return self.classify(instance, node=nextNode)
 
 
@@ -201,6 +210,7 @@ class DecisionNode(object):
         self.children = {}
         self.guess = guess
         self.leaf = leaf
+        self.numeric = None
         # Validate
         if self.leaf:
             if self.data:
@@ -225,7 +235,11 @@ class DecisionNode(object):
         """
         Calculates the information value for a given attribute.
         """
-        m = self.data.summarize(attrName)
+        if self.data.isNumeric(attrName):
+            m = self.data.summarizeNumeric(attrName)
+        else:
+            m = self.data.summarize(attrName)
+
         n = len(self.data.instances)
         info = 0
 
@@ -235,7 +249,11 @@ class DecisionNode(object):
             sum = 0
             for row in range(1, len(m)):
                 # Each row
-                x = float(m[row][col])/float(m[-1][col])
+                if float(m[-1][col]) != 0:
+                    # No occurances of a class value, happens for numeric attributes
+                    x = float(m[row][col])/float(m[-1][col])
+                else:
+                    x = 0
                 if x != 0:
                     sum = sum - x*log(x, 2)
 
@@ -301,21 +319,17 @@ class DecisionNode(object):
                 highest = (attr, infoGain)
 
         self.attribute = highest[0]
+        # print("Selected attribute: {} ({})".format(self.attribute, self.data.isNumeric(self.attribute)))
 
-        # Initialize the children dictionary
-        for value in self.data.listAttributeValues(self.attribute):
-            self.children[value] = None
+        # Check for numeric attributes
+        if self.data.isNumeric(self.attribute):
+            self.numeric = self.data.calculateMean(self.attribute)
+            # Initialize the children dictionary
+            self.children[0] = None # For values <=
+            self.children[1] = None # For values >
+        else:
+            # Initialize the children dictionary
+            for value in self.data.listAttributeValues(self.attribute):
+                self.children[value] = None
 
         # print("Selected attr {} with {} bits".format(self.attribute, highest[1]))
-
-    def splitData(self):
-        """
-        Splits the dataset amongst the children nodes according to the attribute
-        previously set.
-        """
-        if not self.attribute:
-            raise ValueError("Attribute value is not yet set")
-
-        # Split dataset
-        splitDic = self.data.split(self.attribute)
-        return splitDic
