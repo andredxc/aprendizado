@@ -3,7 +3,7 @@ from data import Data
 from decisionTree import DecisionNode, DecisionTree, RandomForest
 import examples
 
-def evaluatePerformance(data, nForests=3):
+def evaluatePerformance(data, nForests=10):
     #Splits instances into folds
     folds = data.generateStratifiedFolds(nForests)
 
@@ -26,7 +26,7 @@ def evaluatePerformance(data, nForests=3):
 
         #Creates and trains the forest
         forest = RandomForest(trainingData, testingData)
-        forest.generateForest(5)
+        forest.generateForest(10)
 
         #Classifies the testing set
         predictions = []
@@ -90,7 +90,6 @@ def evaluatePerformance(data, nForests=3):
 data = examples.setupSpambase()
 evaluatePerformance(data, 10)
 
-
 # Print instance info for debug
 # for key in data.instances[0]:
 #     if key == data.className:
@@ -99,21 +98,3 @@ evaluatePerformance(data, 10)
 #         print("{}: {} (numeric)".format(key, data.instances[0][key]))
 #     else:
 #         print("{}: {} (categoric)".format(key, data.instances[0][key]))
-
-# tree = DecisionTree(data, m=15)
-# tree.train()
-# tree.print()
-
-# correctGuesses = 0
-# wrongGuesses = 0
-# for entry in data.instances:
-#     right = entry[data.className]
-#     guess = tree.classify(entry)
-
-#     if right == guess:
-#         correctGuesses += 1
-#     else:
-#         wrongGuesses += 1
-
-# print("CORRECT: {correct}, WRONG: {wrong}".format(correct=correctGuesses, 
-#                                                   wrong=wrongGuesses))
