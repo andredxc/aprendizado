@@ -9,7 +9,7 @@ class RandomForest(object):
         self.data = data
         self.testingData = testingData
 
-    def generateForest(self, numTrees=5):
+    def generateForest(self, numTrees=10):
         '''
         Generates 'numTrees' random trees trained from 'data'
         '''
