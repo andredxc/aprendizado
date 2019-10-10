@@ -115,12 +115,12 @@ class DecisionTree(object):
         if data.uniformClass() or len(data.attributes) == 0:
             # Leaf node
             curNode = DecisionNode(leaf=True, guess=data.mostFrequentClass())
-        
+
         else:
             # Not a leaf node, continue recursion
             curNode = DecisionNode(data=data, m=self.m)
             curNode.evaluate()
-            
+
             # Split the data amongst the possible values for curNode`s attribute
             splitDic = data.split(curNode.attribute)
 
@@ -139,10 +139,11 @@ class DecisionTree(object):
 
         return curNode
 
-    def print(self, valName='', indent=0, start=None):
+    def display(self, valName='', indent=0, start=None):
 
         if not start:
             start = self.root
+            print("Resulting tree:")
 
         # Recursively print nodes
         s = "   "*indent
@@ -152,10 +153,11 @@ class DecisionTree(object):
             if start.numeric:
                 print("{}- {} -> {} ({})".format(s, valName, start.attribute, start.numeric))
             else:
-                print("{}- {} -> {}".format(s, valName, start.attribute))
+                print("{}- {}   ".format(s, valName))
+                print("{}   {}".format(s, start.attribute))
 
         for key in start.children:
-            self.print(key, indent+1, start.children[key])
+            self.display(key, indent+1, start.children[key])
 
     def classify(self, instance, node=None):
         """
@@ -184,12 +186,12 @@ class DecisionTree(object):
                 if instance[node.attribute] in node.children.keys():
                     # Value is known, follow the tree
                     nextNode = node.children[instance[node.attribute]]
-                    
+
                 else:
                     # Value is not known, guess
                     keyName = choice(list(node.children.keys()))
                     nextNode = node.children[keyName]
-                                
+
             return self.classify(instance, node=nextNode)
 
 
@@ -332,4 +334,4 @@ class DecisionNode(object):
             for value in self.data.listAttributeValues(self.attribute):
                 self.children[value] = None
 
-        # print("Selected attr {} with {} bits".format(self.attribute, highest[1]))
+        # print("Selected attribute {0} with {1:.3f} bits".format(self.attribute, highest[1]))

@@ -87,7 +87,10 @@ def evaluatePerformance(data, nForests=10):
     print("----------")
 
 # -------------------------------------------------------------------
-data = examples.setupSpambase()
+# filename = '../data/dadosBenchmark_validacaoAlgoritmoAD.csv'
+# data = Data(className='Joga')
+# data.parseFromFile(filename, delimiter=';', quotechar='"')
+data = examples.setupCredit()
 evaluatePerformance(data, 10)
 
 # Print instance info for debug
