@@ -1,0 +1,20 @@
+----------
+Model's average performance (1 trees): 89.89% (precision: 89.32% / recall: 89.67%)
+F1-measure from averages: 89.49%
+----------
+----------
+Model's average performance (2 trees): 90.33% (precision: 89.87% / recall: 89.95%)
+F1-measure from averages: 89.91%
+----------
+----------
+Model's average performance (3 trees): 92.81% (precision: 92.65% / recall: 92.31%)
+F1-measure from averages: 92.48%
+----------
+----------
+Model's average performance (4 trees): 92.61% (precision: 92.36% / recall: 92.17%)
+F1-measure from averages: 92.26%
+----------
+----------
+Model's average performance (5 trees): 94.09% (precision: 93.86% / recall: 93.79%)
+F1-measure from averages: 93.83%
+----------

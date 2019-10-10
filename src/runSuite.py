@@ -67,9 +67,9 @@ def evaluatePerformance(data, nForests=10, nTrees=10):
         iterationAvgPrecision = sum(iterationPrecisions)/len(iterationPrecisions)
         iterationAvgRecall = sum(iterationRecalls)/len(iterationRecalls)
 
-        print("----- Forest {} -----".format(iteration))
+        # print("----- Forest {} -----".format(iteration))
         forest.evaluateTreesPerformance()
-        print("Forest performance: {:.2f}% of guesses (precision: {:.2f}% / recall: {:.2f}%)".format(iterationAvgPerformance*100, iterationAvgPrecision*100, iterationAvgRecall*100))
+        # print("Forest performance: {:.2f}% of guesses (precision: {:.2f}% / recall: {:.2f}%)".format(iterationAvgPerformance*100, iterationAvgPrecision*100, iterationAvgRecall*100))
 
         allPerformances.append(iterationAvgPerformance)   #Adds this iteration's performance to the list
         allPrecisions.append(iterationAvgPrecision)   #Adds this iteration's precision to the list
@@ -83,15 +83,37 @@ def evaluatePerformance(data, nForests=10, nTrees=10):
     f1 = (2*avgPrecision*avgRecall) / (avgPrecision+avgRecall)
 
     print("----------")
-    print("Model's average performance: {:.2f}% (precision: {:.2f}% / recall: {:.2f}%)".format(avgPerformance*100, avgPrecision*100, avgRecall*100))
+    print("Model's average performance ({} trees): {:.2f}% (precision: {:.2f}% / recall: {:.2f}%)".format(nTrees, avgPerformance*100, avgPrecision*100, avgRecall*100))
     print("F1-measure from averages: {:.2f}%".format(f1*100))
     print("----------")
 
 
 # ------------------------- German Credit Data Set
-maxTrees = 10
+print("------------------------- German Credit Data Set")
 data = examples.setupCredit()
-
-for i in range(maxTrees):
+start = 61
+maxTrees = 100
+for i in range(start, maxTrees+1):
+    evaluatePerformance(data, nForests=10, nTrees=i) 
+# ------------------------- Vertebral Column Data Set
+print("------------------------- Vertebral Column Data Set")
+data = examples.setupVertebra()
+start = 61
+maxTrees = 100
+for i in range(start, maxTrees+1):
+    evaluatePerformance(data, nForests=10, nTrees=i) 
+# ------------------------- Wine Data Set
+print("------------------------- Wine Data Set")
+data = examples.setupCredit()
+start = 61
+maxTrees = 100
+for i in range(start, maxTrees+1):
+    evaluatePerformance(data, nForests=10, nTrees=i) 
+# ------------------------- Spambase
+print("------------------------- Spambase")
+data = examples.setupSpambase()
+start = 9
+maxTrees = 100
+for i in range(start, maxTrees+1):
     evaluatePerformance(data, nForests=10, nTrees=i)
     

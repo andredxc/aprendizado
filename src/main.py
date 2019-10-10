@@ -5,6 +5,7 @@ import examples
 import sys
 from runSuite import evaluatePerformance
 
+
 # -------------------------------------------------------------------
 if len(sys.argv) == 1:  #No arguments
     #Run sample code

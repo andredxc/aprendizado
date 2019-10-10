@@ -1,0 +1,372 @@
+----- Forest 0 -----
+Forest performance: 65.00% of guesses (precision: 61.78% / recall: 63.57%)
+----- Forest 1 -----
+Forest performance: 71.00% of guesses (precision: 64.97% / recall: 64.05%)
+----- Forest 2 -----
+Forest performance: 61.00% of guesses (precision: 52.28% / recall: 52.14%)
+----- Forest 3 -----
+Forest performance: 69.00% of guesses (precision: 62.87% / recall: 62.62%)
+----- Forest 4 -----
+Forest performance: 70.00% of guesses (precision: 64.29% / recall: 64.29%)
+----- Forest 5 -----
+Forest performance: 62.00% of guesses (precision: 55.51% / recall: 55.71%)
+----- Forest 6 -----
+Forest performance: 66.00% of guesses (precision: 60.70% / recall: 61.43%)
+----- Forest 7 -----
+Forest performance: 77.00% of guesses (precision: 72.67% / recall: 73.10%)
+----- Forest 8 -----
+Forest performance: 68.00% of guesses (precision: 62.41% / recall: 62.86%)
+----- Forest 9 -----
+Forest performance: 67.00% of guesses (precision: 58.75% / recall: 57.38%)
+----------
+Model's average performance (1 trees): 67.60% (precision: 61.62% / recall: 61.71%)
+F1-measure from averages: 61.67%
+----------
+----- Forest 0 -----
+Forest performance: 71.00% of guesses (precision: 64.40% / recall: 62.14%)
+----- Forest 1 -----
+Forest performance: 61.00% of guesses (precision: 50.28% / recall: 50.24%)
+----- Forest 2 -----
+Forest performance: 65.00% of guesses (precision: 57.36% / recall: 56.90%)
+----- Forest 3 -----
+Forest performance: 67.00% of guesses (precision: 59.33% / recall: 58.33%)
+----- Forest 4 -----
+Forest performance: 68.00% of guesses (precision: 62.92% / recall: 63.81%)
+----- Forest 5 -----
+Forest performance: 61.00% of guesses (precision: 53.16% / recall: 53.10%)
+----- Forest 6 -----
+Forest performance: 67.00% of guesses (precision: 62.09% / recall: 63.10%)
+----- Forest 7 -----
+Forest performance: 66.00% of guesses (precision: 58.32% / recall: 57.62%)
+----- Forest 8 -----
+Forest performance: 62.00% of guesses (precision: 56.24% / recall: 56.67%)
+----- Forest 9 -----
+Forest performance: 71.00% of guesses (precision: 65.30% / recall: 65.00%)
+----------
+Model's average performance (2 trees): 65.90% (precision: 58.94% / recall: 58.69%)
+F1-measure from averages: 58.81%
+----------
+----- Forest 0 -----
+Forest performance: 66.00% of guesses (precision: 58.93% / recall: 58.57%)
+----- Forest 1 -----
+Forest performance: 74.00% of guesses (precision: 69.05% / recall: 69.05%)
+----- Forest 2 -----
+Forest performance: 69.00% of guesses (precision: 60.72% / recall: 57.86%)
+----- Forest 3 -----
+Forest performance: 70.00% of guesses (precision: 62.50% / recall: 59.52%)
+----- Forest 4 -----
+Forest performance: 66.00% of guesses (precision: 60.11% / recall: 60.48%)
+----- Forest 5 -----
+Forest performance: 65.00% of guesses (precision: 58.65% / recall: 58.81%)
+----- Forest 6 -----
+Forest performance: 71.00% of guesses (precision: 65.66% / recall: 65.95%)
+----- Forest 7 -----
+Forest performance: 71.00% of guesses (precision: 64.97% / recall: 64.05%)
+----- Forest 8 -----
+Forest performance: 75.00% of guesses (precision: 70.04% / recall: 68.81%)
+----- Forest 9 -----
+Forest performance: 69.00% of guesses (precision: 62.43% / recall: 61.67%)
+----------
+Model's average performance (3 trees): 69.60% (precision: 63.31% / recall: 62.48%)
+F1-measure from averages: 62.89%
+----------
+----- Forest 0 -----
+Forest performance: 66.00% of guesses (precision: 57.68% / recall: 56.67%)
+----- Forest 1 -----
+Forest performance: 61.00% of guesses (precision: 52.28% / recall: 52.14%)
+----- Forest 2 -----
+Forest performance: 73.00% of guesses (precision: 67.22% / recall: 64.52%)
+----- Forest 3 -----
+Forest performance: 66.00% of guesses (precision: 56.99% / recall: 55.71%)
+----- Forest 4 -----
+Forest performance: 71.00% of guesses (precision: 64.40% / recall: 62.14%)
+----- Forest 5 -----
+Forest performance: 71.00% of guesses (precision: 64.17% / recall: 61.19%)
+----- Forest 6 -----
+Forest performance: 75.00% of guesses (precision: 70.16% / recall: 69.76%)
+----- Forest 7 -----
+Forest performance: 71.00% of guesses (precision: 63.97% / recall: 60.24%)
+----- Forest 8 -----
+Forest performance: 73.00% of guesses (precision: 67.36% / recall: 61.67%)
+----- Forest 9 -----
+Forest performance: 74.00% of guesses (precision: 68.65% / recall: 65.24%)
+----------
+Model's average performance (4 trees): 70.10% (precision: 63.29% / recall: 60.93%)
+F1-measure from averages: 62.09%
+----------
+----- Forest 0 -----
+Forest performance: 63.00% of guesses (precision: 53.11% / recall: 52.62%)
+----- Forest 1 -----
+Forest performance: 76.00% of guesses (precision: 71.38% / recall: 68.57%)
+----- Forest 2 -----
+Forest performance: 64.00% of guesses (precision: 55.72% / recall: 55.24%)
+----- Forest 3 -----
+Forest performance: 74.00% of guesses (precision: 68.75% / recall: 64.29%)
+----- Forest 4 -----
+Forest performance: 69.00% of guesses (precision: 62.87% / recall: 62.62%)
+----- Forest 5 -----
+Forest performance: 70.00% of guesses (precision: 61.63% / recall: 56.67%)
+----- Forest 6 -----
+Forest performance: 72.00% of guesses (precision: 66.11% / recall: 64.76%)
+----- Forest 7 -----
+Forest performance: 69.00% of guesses (precision: 61.58% / recall: 59.76%)
+----- Forest 8 -----
+Forest performance: 66.00% of guesses (precision: 56.99% / recall: 55.71%)
+----- Forest 9 -----
+Forest performance: 65.00% of guesses (precision: 56.67% / recall: 55.95%)
+----------
+Model's average performance (5 trees): 68.80% (precision: 61.48% / recall: 59.62%)
+F1-measure from averages: 60.54%
+----------
+----- Forest 0 -----
+Forest performance: 70.00% of guesses (precision: 63.16% / recall: 61.43%)
+----- Forest 1 -----
+Forest performance: 71.00% of guesses (precision: 64.17% / recall: 61.19%)
+----- Forest 2 -----
+Forest performance: 68.00% of guesses (precision: 59.91% / recall: 58.10%)
+----- Forest 3 -----
+Forest performance: 73.00% of guesses (precision: 67.65% / recall: 60.71%)
+----- Forest 4 -----
+Forest performance: 78.00% of guesses (precision: 75.75% / recall: 68.10%)
+----- Forest 5 -----
+Forest performance: 70.00% of guesses (precision: 64.29% / recall: 64.29%)
+----- Forest 6 -----
+Forest performance: 74.00% of guesses (precision: 68.71% / recall: 67.14%)
+----- Forest 7 -----
+Forest performance: 71.00% of guesses (precision: 63.82% / recall: 59.29%)
+----- Forest 8 -----
+Forest performance: 69.00% of guesses (precision: 62.43% / recall: 61.67%)
+----- Forest 9 -----
+Forest performance: 73.00% of guesses (precision: 67.33% / recall: 65.48%)
+----------
+Model's average performance (6 trees): 71.70% (precision: 65.72% / recall: 62.74%)
+F1-measure from averages: 64.19%
+----------
+----- Forest 0 -----
+Forest performance: 66.00% of guesses (precision: 57.68% / recall: 56.67%)
+----- Forest 1 -----
+Forest performance: 71.00% of guesses (precision: 64.40% / recall: 62.14%)
+----- Forest 2 -----
+Forest performance: 82.00% of guesses (precision: 81.25% / recall: 73.81%)
+----- Forest 3 -----
+Forest performance: 74.00% of guesses (precision: 68.75% / recall: 64.29%)
+----- Forest 4 -----
+Forest performance: 72.00% of guesses (precision: 65.73% / recall: 62.86%)
+----- Forest 5 -----
+Forest performance: 72.00% of guesses (precision: 65.73% / recall: 62.86%)
+----- Forest 6 -----
+Forest performance: 67.00% of guesses (precision: 55.88% / recall: 53.57%)
+----- Forest 7 -----
+Forest performance: 75.00% of guesses (precision: 70.04% / recall: 68.81%)
+----- Forest 8 -----
+Forest performance: 75.00% of guesses (precision: 70.91% / recall: 64.05%)
+----- Forest 9 -----
+Forest performance: 76.00% of guesses (precision: 71.88% / recall: 66.67%)
+----------
+Model's average performance (7 trees): 73.00% (precision: 67.22% / recall: 63.57%)
+F1-measure from averages: 65.35%
+----------
+----- Forest 0 -----
+Forest performance: 78.00% of guesses (precision: 74.12% / recall: 70.95%)
+----- Forest 1 -----
+Forest performance: 74.00% of guesses (precision: 68.75% / recall: 64.29%)
+----- Forest 2 -----
+Forest performance: 76.00% of guesses (precision: 71.38% / recall: 68.57%)
+----- Forest 3 -----
+Forest performance: 72.00% of guesses (precision: 65.90% / recall: 63.81%)
+----- Forest 4 -----
+Forest performance: 73.00% of guesses (precision: 67.22% / recall: 62.62%)
+----- Forest 5 -----
+Forest performance: 67.00% of guesses (precision: 51.83% / recall: 50.71%)
+----- Forest 6 -----
+Forest performance: 72.00% of guesses (precision: 65.58% / recall: 60.95%)
+----- Forest 7 -----
+Forest performance: 70.00% of guesses (precision: 62.50% / recall: 59.52%)
+----- Forest 8 -----
+Forest performance: 68.00% of guesses (precision: 59.91% / recall: 58.10%)
+----- Forest 9 -----
+Forest performance: 76.00% of guesses (precision: 71.88% / recall: 66.67%)
+----------
+Model's average performance (8 trees): 72.60% (precision: 65.91% / recall: 62.62%)
+F1-measure from averages: 64.22%
+----------
+----------
+Model's average performance (9 trees): 72.40% (precision: 66.17% / recall: 62.29%)
+F1-measure from averages: 64.17%
+----------
+----------
+Model's average performance (10 trees): 72.00% (precision: 65.58% / recall: 62.29%)
+F1-measure from averages: 63.89%
+----------
+----------
+Model's average performance (11 trees): 75.40% (precision: 70.82% / recall: 66.33%)
+F1-measure from averages: 68.50%
+----------
+----------
+Model's average performance (12 trees): 73.20% (precision: 67.79% / recall: 63.14%)
+F1-measure from averages: 65.38%
+----------
+----------
+Model's average performance (13 trees): 73.80% (precision: 68.34% / recall: 64.43%)
+F1-measure from averages: 66.33%
+----------
+----------
+Model's average performance (14 trees): 74.30% (precision: 69.86% / recall: 64.40%)
+F1-measure from averages: 67.02%
+----------
+----------
+Model's average performance (15 trees): 73.20% (precision: 67.72% / recall: 62.48%)
+F1-measure from averages: 64.99%
+----------
+----------
+Model's average performance (16 trees): 74.60% (precision: 70.04% / recall: 64.90%)
+F1-measure from averages: 67.37%
+----------
+----------
+Model's average performance (17 trees): 73.10% (precision: 67.73% / recall: 62.12%)
+F1-measure from averages: 64.80%
+----------
+----------
+Model's average performance (18 trees): 72.70% (precision: 66.92% / recall: 61.74%)
+F1-measure from averages: 64.22%
+----------
+----------
+Model's average performance (19 trees): 71.70% (precision: 65.80% / recall: 60.55%)
+F1-measure from averages: 63.06%
+----------
+----------
+Model's average performance (20 trees): 73.10% (precision: 67.43% / recall: 62.88%)
+F1-measure from averages: 65.08%
+----------
+----------
+Model's average performance (21 trees): 73.20% (precision: 68.08% / recall: 62.10%)
+F1-measure from averages: 64.95%
+----------
+----------
+Model's average performance (22 trees): 74.40% (precision: 69.37% / recall: 63.62%)
+F1-measure from averages: 66.37%
+----------
+----------
+Model's average performance (23 trees): 74.90% (precision: 70.28% / recall: 64.64%)
+F1-measure from averages: 67.34%
+----------
+----------
+Model's average performance (24 trees): 72.10% (precision: 65.34% / recall: 60.36%)
+F1-measure from averages: 62.75%
+----------
+----------
+Model's average performance (25 trees): 74.80% (precision: 70.37% / recall: 63.90%)
+F1-measure from averages: 66.98%
+----------
+----------
+Model's average performance (26 trees): 73.50% (precision: 68.74% / recall: 63.45%)
+F1-measure from averages: 65.99%
+----------
+----------
+Model's average performance (27 trees): 74.10% (precision: 69.49% / recall: 62.93%)
+F1-measure from averages: 66.05%
+----------
+----------
+Model's average performance (28 trees): 74.60% (precision: 71.00% / recall: 63.19%)
+F1-measure from averages: 66.87%
+----------
+----------
+Model's average performance (29 trees): 74.10% (precision: 69.33% / recall: 63.50%)
+F1-measure from averages: 66.29%
+----------
+----------
+Model's average performance (30 trees): 73.40% (precision: 68.22% / recall: 62.62%)
+F1-measure from averages: 65.30%
+----------
+
+
+
+(1 trees): 67.60% (precision: 61.62% / recall: 61.71%)
+F1-measure from averages: 61.67%
+
+(2 trees): 65.90% (precision: 58.94% / recall: 58.69%)
+F1-measure from averages: 58.81%
+
+(3 trees): 69.60% (precision: 63.31% / recall: 62.48%)
+F1-measure from averages: 62.89%
+
+(4 trees): 70.10% (precision: 63.29% / recall: 60.93%)
+F1-measure from averages: 62.09%
+
+(5 trees): 68.80% (precision: 61.48% / recall: 59.62%)
+F1-measure from averages: 60.54%
+
+(6 trees): 71.70% (precision: 65.72% / recall: 62.74%)
+F1-measure from averages: 64.19%
+
+(7 trees): 73.00% (precision: 67.22% / recall: 63.57%)
+F1-measure from averages: 65.35%
+
+(8 trees): 72.60% (precision: 65.91% / recall: 62.62%)
+F1-measure from averages: 64.22%
+
+(9 trees): 72.40% (precision: 66.17% / recall: 62.29%)
+F1-measure from averages: 64.17%
+
+(10 trees): 72.00% (precision: 65.58% / recall: 62.29%)
+F1-measure from averages: 63.89%
+
+(11 trees): 75.40% (precision: 70.82% / recall: 66.33%)
+F1-measure from averages: 68.50%
+
+(12 trees): 73.20% (precision: 67.79% / recall: 63.14%)
+F1-measure from averages: 65.38%
+
+(13 trees): 73.80% (precision: 68.34% / recall: 64.43%)
+F1-measure from averages: 66.33%
+
+(14 trees): 74.30% (precision: 69.86% / recall: 64.40%)
+F1-measure from averages: 67.02%
+
+(15 trees): 73.20% (precision: 67.72% / recall: 62.48%)
+F1-measure from averages: 64.99%
+
+(16 trees): 74.60% (precision: 70.04% / recall: 64.90%)
+F1-measure from averages: 67.37%
+
+(17 trees): 73.10% (precision: 67.73% / recall: 62.12%)
+F1-measure from averages: 64.80%
+
+(18 trees): 72.70% (precision: 66.92% / recall: 61.74%)
+F1-measure from averages: 64.22%
+
+(19 trees): 71.70% (precision: 65.80% / recall: 60.55%)
+F1-measure from averages: 63.06%
+
+(20 trees): 73.10% (precision: 67.43% / recall: 62.88%)
+F1-measure from averages: 65.08%
+
+(21 trees): 73.20% (precision: 68.08% / recall: 62.10%)
+F1-measure from averages: 64.95%
+
+(22 trees): 74.40% (precision: 69.37% / recall: 63.62%)
+F1-measure from averages: 66.37%
+
+(23 trees): 74.90% (precision: 70.28% / recall: 64.64%)
+F1-measure from averages: 67.34%
+
+(24 trees): 72.10% (precision: 65.34% / recall: 60.36%)
+F1-measure from averages: 62.75%
+
+(25 trees): 74.80% (precision: 70.37% / recall: 63.90%)
+F1-measure from averages: 66.98%
+
+(26 trees): 73.50% (precision: 68.74% / recall: 63.45%)
+F1-measure from averages: 65.99%
+
+(27 trees): 74.10% (precision: 69.49% / recall: 62.93%)
+F1-measure from averages: 66.05%
+
+(28 trees): 74.60% (precision: 71.00% / recall: 63.19%)
+F1-measure from averages: 66.87%
+
+(29 trees): 74.10% (precision: 69.33% / recall: 63.50%)
+F1-measure from averages: 66.29%
+
+(30 trees): 73.40% (precision: 68.22% / recall: 62.62%)
+F1-measure from averages: 65.30%

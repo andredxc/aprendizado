@@ -33,7 +33,7 @@ class RandomForest(object):
         #Creates each tree and trains them
         for i in range(numTrees):
             self.trees.append(DecisionTree(data=treeTrainingData[i],
-                                           testingData=treeTestingData[i], m=4))
+                                           testingData=treeTestingData[i]))
             self.trees[i].train()
 
     def classify(self, instance):
@@ -86,7 +86,8 @@ class RandomForest(object):
             treePerformances.append(rightGuesses/len(tree.testingData.instances))
 
         for i in range(len(treePerformances)):
-            print("    Tree {} got {:.2f}% of the instances right.".format(i, treePerformances[i]*100))
+            # print("    Tree {} got {:.2f}% of the instances right.".format(i, treePerformances[i]*100))
+            pass
 
 
 class DecisionTree(object):
