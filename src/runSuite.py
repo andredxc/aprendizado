@@ -3,6 +3,7 @@ from data import Data
 from decisionTree import DecisionNode, DecisionTree, RandomForest
 import examples
 import sys
+import logging
 
 def evaluatePerformance(data, nForests=10, nTrees=10):
     #Splits instances into folds
@@ -82,38 +83,38 @@ def evaluatePerformance(data, nForests=10, nTrees=10):
     #Calculates F1-Measure for all iterations
     f1 = (2*avgPrecision*avgRecall) / (avgPrecision+avgRecall)
 
-    print("----------")
-    print("Model's average performance ({} trees): {:.2f}% (precision: {:.2f}% / recall: {:.2f}%)".format(nTrees, avgPerformance*100, avgPrecision*100, avgRecall*100))
-    print("F1-measure from averages: {:.2f}%".format(f1*100))
-    print("----------")
+    # print("----------")
+    # print("Model's average performance ({} trees): {:.2f}% (precision: {:.2f}% / recall: {:.2f}%)".format(nTrees, avgPerformance*100, avgPrecision*100, avgRecall*100))
+    # print("F1-measure from averages: {:.2f}%".format(f1*100))
+    # print("----------")
+    dic = {'nTrees': nTrees, 'avgPerformance': avgPerformance*100, 
+           'avgPrecision': avgPrecision*100, 'avgRecall': avgRecall*100,
+           'f1measure': f1*100}
+    return dic
 
 
-# ------------------------- German Credit Data Set
+logging.basicConfig(filename='out.log', filemode='w', format='%(message)s', level=logging.INFO)
+start = 41
+maxTrees = 50
+numRep = 3
 print("------------------------- German Credit Data Set")
+logging.info("German Credit Data Set")
 data = examples.setupCredit()
-start = 61
-maxTrees = 100
 for i in range(start, maxTrees+1):
-    evaluatePerformance(data, nForests=10, nTrees=i) 
-# ------------------------- Vertebral Column Data Set
-print("------------------------- Vertebral Column Data Set")
-data = examples.setupVertebra()
-start = 61
-maxTrees = 100
-for i in range(start, maxTrees+1):
-    evaluatePerformance(data, nForests=10, nTrees=i) 
-# ------------------------- Wine Data Set
-print("------------------------- Wine Data Set")
-data = examples.setupCredit()
-start = 61
-maxTrees = 100
-for i in range(start, maxTrees+1):
-    evaluatePerformance(data, nForests=10, nTrees=i) 
-# ------------------------- Spambase
-print("------------------------- Spambase")
-data = examples.setupSpambase()
-start = 9
-maxTrees = 100
-for i in range(start, maxTrees+1):
-    evaluatePerformance(data, nForests=10, nTrees=i)
-    
+    print("Running with {} trees".format(i))
+    sumDic = {}
+    for j in range(numRep):
+        curDic = evaluatePerformance(data, nForests=10, nTrees=i)
+        # Accumulate values in sum dictionary
+        for key in curDic:
+            if key in sumDic:
+                sumDic[key] += curDic[key]  
+            else:
+                sumDic[key] = curDic[key]
+
+    # Calculate average for each value
+    for key in sumDic:
+        sumDic[key] = sumDic[key]/numRep
+
+    # Log results
+    logging.info(sumDic)

@@ -1,708 +1,167 @@
-------------------------- German Credit Data Set
-----------
-Model's average performance (61 trees): 74.30% (precision: 69.89% / recall: 63.74%)
-F1-measure from averages: 66.67%
-----------
-----------
-Model's average performance (62 trees): 74.30% (precision: 69.57% / recall: 63.45%)
-F1-measure from averages: 66.37%
-----------
-----------
-Model's average performance (63 trees): 75.00% (precision: 71.08% / recall: 64.43%)
-F1-measure from averages: 67.59%
-----------
-----------
-Model's average performance (64 trees): 75.00% (precision: 70.92% / recall: 63.86%)
-F1-measure from averages: 67.20%
-----------
-----------
-Model's average performance (65 trees): 75.50% (precision: 71.53% / recall: 64.40%)
-F1-measure from averages: 67.78%
-----------
-----------
-Model's average performance (66 trees): 75.80% (precision: 72.40% / recall: 65.29%)
-F1-measure from averages: 68.66%
-----------
-----------
-Model's average performance (67 trees): 74.20% (precision: 69.60% / recall: 62.62%)
-F1-measure from averages: 65.93%
-----------
-----------
-Model's average performance (68 trees): 74.10% (precision: 69.34% / recall: 62.55%)
-F1-measure from averages: 65.77%
-----------
-----------
-Model's average performance (69 trees): 74.30% (precision: 70.10% / recall: 63.07%)
-F1-measure from averages: 66.40%
-----------
-----------
-Model's average performance (70 trees): 73.10% (precision: 67.57% / recall: 61.45%)
-F1-measure from averages: 64.37%
-----------
-----------
-Model's average performance (71 trees): 75.30% (precision: 70.94% / recall: 64.74%)
-F1-measure from averages: 67.70%
-----------
-----------
-Model's average performance (72 trees): 75.10% (precision: 71.47% / recall: 64.40%)
-F1-measure from averages: 67.75%
-----------
-----------
-Model's average performance (73 trees): 75.20% (precision: 71.87% / recall: 64.38%)
-F1-measure from averages: 67.92%
-----------
-----------
-Model's average performance (74 trees): 73.70% (precision: 69.17% / recall: 62.26%)
-F1-measure from averages: 65.54%
-----------
-----------
-Model's average performance (75 trees): 74.70% (precision: 70.25% / recall: 63.74%)
-F1-measure from averages: 66.84%
-----------
-----------
-Model's average performance (76 trees): 75.30% (precision: 71.94% / recall: 64.17%)
-F1-measure from averages: 67.83%
-----------
-----------
-Model's average performance (77 trees): 73.60% (precision: 68.77% / recall: 62.57%)
-F1-measure from averages: 65.52%
-----------
-----------
-Model's average performance (78 trees): 74.60% (precision: 70.08% / recall: 63.95%)
-F1-measure from averages: 66.88%
-----------
-----------
-Model's average performance (79 trees): 74.40% (precision: 70.29% / recall: 63.05%)
-F1-measure from averages: 66.47%
-----------
-----------
-Model's average performance (80 trees): 75.00% (precision: 71.41% / recall: 63.76%)
-F1-measure from averages: 67.37%
-----------
-----------
-Model's average performance (81 trees): 75.20% (precision: 71.95% / recall: 64.10%)
-F1-measure from averages: 67.79%
-----------
-----------
-Model's average performance (82 trees): 74.70% (precision: 72.64% / recall: 63.26%)
-F1-measure from averages: 67.63%
-----------
-----------
-Model's average performance (83 trees): 74.50% (precision: 70.95% / recall: 62.64%)
-F1-measure from averages: 66.54%
-----------
-----------
-Model's average performance (84 trees): 75.90% (precision: 72.64% / recall: 65.17%)
-F1-measure from averages: 68.70%
-----------
-----------
-Model's average performance (85 trees): 74.30% (precision: 69.98% / recall: 63.26%)
-F1-measure from averages: 66.45%
-----------
-----------
-Model's average performance (86 trees): 75.10% (precision: 71.17% / recall: 64.21%)
-F1-measure from averages: 67.51%
-----------
-----------
-Model's average performance (87 trees): 75.10% (precision: 71.43% / recall: 63.64%)
-F1-measure from averages: 67.31%
-----------
-----------
-Model's average performance (88 trees): 74.50% (precision: 70.34% / recall: 63.40%)
-F1-measure from averages: 66.69%
-----------
-----------
-Model's average performance (89 trees): 75.00% (precision: 71.29% / recall: 63.67%)
-F1-measure from averages: 67.27%
-----------
-----------
-Model's average performance (90 trees): 76.40% (precision: 73.74% / recall: 65.81%)
-F1-measure from averages: 69.55%
-----------
-----------
-Model's average performance (91 trees): 74.90% (precision: 71.82% / recall: 63.69%)
-F1-measure from averages: 67.51%
-----------
-----------
-Model's average performance (92 trees): 75.30% (precision: 71.49% / recall: 64.26%)
-F1-measure from averages: 67.68%
-----------
-----------
-Model's average performance (93 trees): 75.40% (precision: 71.93% / recall: 63.95%)
-F1-measure from averages: 67.71%
-----------
-----------
-Model's average performance (94 trees): 74.90% (precision: 71.07% / recall: 64.17%)
-F1-measure from averages: 67.44%
-----------
-----------
-Model's average performance (95 trees): 74.00% (precision: 69.28% / recall: 62.95%)
-F1-measure from averages: 65.97%
-----------
-----------
-Model's average performance (96 trees): 75.20% (precision: 71.10% / recall: 64.29%)
-F1-measure from averages: 67.52%
-----------
-----------
-Model's average performance (97 trees): 76.10% (precision: 73.03% / recall: 65.31%)
-F1-measure from averages: 68.96%
-----------
-----------
-Model's average performance (98 trees): 74.30% (precision: 70.17% / recall: 63.07%)
-F1-measure from averages: 66.43%
-----------
-----------
-Model's average performance (99 trees): 75.00% (precision: 71.53% / recall: 63.29%)
-F1-measure from averages: 67.16%
-----------
-----------
-Model's average performance (100 trees): 74.50% (precision: 70.65% / recall: 63.60%)
-F1-measure from averages: 66.94%
-----------
-------------------------- Vertebral Column Data Set
-----------
-Model's average performance (61 trees): 86.88% (precision: 76.82% / recall: 75.78%)
-F1-measure from averages: 76.30%
-----------
-----------
-Model's average performance (62 trees): 87.53% (precision: 78.09% / recall: 77.22%)
-F1-measure from averages: 77.65%
-----------
-----------
-Model's average performance (63 trees): 88.60% (precision: 80.47% / recall: 79.67%)
-F1-measure from averages: 80.07%
-----------
-----------
-Model's average performance (64 trees): 87.31% (precision: 77.10% / recall: 77.22%)
-F1-measure from averages: 77.16%
-----------
-----------
-Model's average performance (65 trees): 88.39% (precision: 79.84% / recall: 79.00%)
-F1-measure from averages: 79.42%
-----------
-----------
-Model's average performance (66 trees): 87.31% (precision: 77.60% / recall: 77.33%)
-F1-measure from averages: 77.47%
-----------
-----------
-Model's average performance (67 trees): 87.96% (precision: 79.12% / recall: 78.33%)
-F1-measure from averages: 78.73%
-----------
-----------
-Model's average performance (68 trees): 87.31% (precision: 77.38% / recall: 76.33%)
-F1-measure from averages: 76.85%
-----------
-----------
-Model's average performance (69 trees): 87.31% (precision: 77.18% / recall: 76.67%)
-F1-measure from averages: 76.92%
-----------
-----------
-Model's average performance (70 trees): 87.53% (precision: 78.78% / recall: 77.67%)
-F1-measure from averages: 78.22%
-----------
-----------
-Model's average performance (71 trees): 87.74% (precision: 78.66% / recall: 77.89%)
-F1-measure from averages: 78.27%
-----------
-----------
-Model's average performance (72 trees): 87.53% (precision: 77.52% / recall: 78.11%)
-F1-measure from averages: 77.82%
-----------
-----------
-Model's average performance (73 trees): 87.96% (precision: 79.32% / recall: 77.78%)
-F1-measure from averages: 78.54%
-----------
-----------
-Model's average performance (74 trees): 87.96% (precision: 78.39% / recall: 78.67%)
-F1-measure from averages: 78.53%
-----------
-----------
-Model's average performance (75 trees): 87.74% (precision: 78.73% / recall: 78.11%)
-F1-measure from averages: 78.42%
-----------
-----------
-Model's average performance (76 trees): 87.53% (precision: 78.70% / recall: 77.11%)
-F1-measure from averages: 77.90%
-----------
-----------
-Model's average performance (77 trees): 88.17% (precision: 78.93% / recall: 78.67%)
-F1-measure from averages: 78.80%
-----------
-----------
-Model's average performance (78 trees): 87.74% (precision: 78.81% / recall: 77.22%)
-F1-measure from averages: 78.01%
-----------
-----------
-Model's average performance (79 trees): 87.74% (precision: 78.19% / recall: 76.89%)
-F1-measure from averages: 77.53%
-----------
-----------
-Model's average performance (80 trees): 87.53% (precision: 78.28% / recall: 77.44%)
-F1-measure from averages: 77.86%
-----------
-----------
-Model's average performance (81 trees): 87.96% (precision: 78.78% / recall: 78.56%)
-F1-measure from averages: 78.67%
-----------
-----------
-Model's average performance (82 trees): 88.60% (precision: 80.30% / recall: 79.56%)
-F1-measure from averages: 79.93%
-----------
-----------
-Model's average performance (83 trees): 86.88% (precision: 76.09% / recall: 75.78%)
-F1-measure from averages: 75.93%
-----------
-----------
-Model's average performance (84 trees): 87.31% (precision: 78.02% / recall: 77.11%)
-F1-measure from averages: 77.56%
-----------
-----------
-Model's average performance (85 trees): 86.67% (precision: 76.14% / recall: 76.33%)
-F1-measure from averages: 76.24%
-----------
-----------
-Model's average performance (86 trees): 87.74% (precision: 77.76% / recall: 77.11%)
-F1-measure from averages: 77.44%
-----------
-----------
-Model's average performance (87 trees): 88.39% (precision: 79.41% / recall: 78.67%)
-F1-measure from averages: 79.04%
-----------
-----------
-Model's average performance (88 trees): 87.74% (precision: 79.52% / recall: 78.22%)
-F1-measure from averages: 78.86%
-----------
-----------
-Model's average performance (89 trees): 87.31% (precision: 78.06% / recall: 77.00%)
-F1-measure from averages: 77.53%
-----------
-----------
-Model's average performance (90 trees): 87.74% (precision: 78.07% / recall: 77.78%)
-F1-measure from averages: 77.92%
-----------
-----------
-Model's average performance (91 trees): 88.60% (precision: 80.14% / recall: 79.67%)
-F1-measure from averages: 79.90%
-----------
-----------
-Model's average performance (92 trees): 87.96% (precision: 78.90% / recall: 78.67%)
-F1-measure from averages: 78.78%
-----------
-----------
-Model's average performance (93 trees): 88.39% (precision: 80.06% / recall: 79.56%)
-F1-measure from averages: 79.81%
-----------
-----------
-Model's average performance (94 trees): 87.31% (precision: 77.14% / recall: 76.33%)
-F1-measure from averages: 76.73%
-----------
-----------
-Model's average performance (95 trees): 87.53% (precision: 77.58% / recall: 77.56%)
-F1-measure from averages: 77.57%
-----------
-----------
-Model's average performance (96 trees): 87.31% (precision: 77.94% / recall: 77.56%)
-F1-measure from averages: 77.75%
-----------
-----------
-Model's average performance (97 trees): 87.31% (precision: 77.45% / recall: 77.00%)
-F1-measure from averages: 77.23%
-----------
-----------
-Model's average performance (98 trees): 87.10% (precision: 78.85% / recall: 76.44%)
-F1-measure from averages: 77.63%
-----------
-----------
-Model's average performance (99 trees): 87.96% (precision: 77.87% / recall: 77.56%)
-F1-measure from averages: 77.71%
-----------
-----------
-Model's average performance (100 trees): 87.31% (precision: 77.80% / recall: 77.56%)
-F1-measure from averages: 77.68%
-----------
-------------------------- Wine Data Set
-----------
-Model's average performance (61 trees): 74.20% (precision: 69.85% / recall: 63.57%)
-F1-measure from averages: 66.56%
-----------
-----------
-Model's average performance (62 trees): 74.50% (precision: 70.87% / recall: 63.60%)
-F1-measure from averages: 67.04%
-----------
-----------
-Model's average performance (63 trees): 74.20% (precision: 69.80% / recall: 63.10%)
-F1-measure from averages: 66.28%
-----------
-----------
-Model's average performance (64 trees): 74.80% (precision: 71.00% / recall: 63.81%)
-F1-measure from averages: 67.21%
-----------
-----------
-Model's average performance (65 trees): 74.30% (precision: 69.25% / recall: 63.93%)
-F1-measure from averages: 66.48%
-----------
-----------
-Model's average performance (66 trees): 75.10% (precision: 71.74% / recall: 64.02%)
-F1-measure from averages: 67.66%
-----------
-----------
-Model's average performance (67 trees): 74.70% (precision: 70.56% / recall: 63.74%)
-F1-measure from averages: 66.98%
-----------
-----------
-Model's average performance (68 trees): 74.70% (precision: 70.67% / recall: 63.55%)
-F1-measure from averages: 66.92%
-----------
-----------
-Model's average performance (69 trees): 73.50% (precision: 68.36% / recall: 61.64%)
-F1-measure from averages: 64.83%
-----------
-----------
-Model's average performance (70 trees): 74.90% (precision: 70.94% / recall: 64.36%)
-F1-measure from averages: 67.49%
-----------
-----------
-Model's average performance (71 trees): 75.60% (precision: 72.63% / recall: 64.38%)
-F1-measure from averages: 68.26%
-----------
-----------
-Model's average performance (72 trees): 73.50% (precision: 68.69% / recall: 62.12%)
-F1-measure from averages: 65.24%
-----------
-----------
-Model's average performance (73 trees): 74.10% (precision: 69.34% / recall: 63.40%)
-F1-measure from averages: 66.24%
-----------
-----------
-Model's average performance (74 trees): 74.30% (precision: 69.88% / recall: 63.26%)
-F1-measure from averages: 66.41%
-----------
-----------
-Model's average performance (75 trees): 74.40% (precision: 69.85% / recall: 63.05%)
-F1-measure from averages: 66.28%
-----------
-----------
-Model's average performance (76 trees): 75.10% (precision: 71.34% / recall: 63.83%)
-F1-measure from averages: 67.38%
-----------
-----------
-Model's average performance (77 trees): 75.20% (precision: 71.75% / recall: 64.48%)
-F1-measure from averages: 67.92%
-----------
-----------
-Model's average performance (78 trees): 75.30% (precision: 71.53% / recall: 64.17%)
-F1-measure from averages: 67.65%
-----------
-----------
-Model's average performance (79 trees): 74.00% (precision: 70.17% / recall: 63.14%)
-F1-measure from averages: 66.47%
-----------
-----------
-Model's average performance (80 trees): 75.50% (precision: 71.70% / recall: 65.17%)
-F1-measure from averages: 68.28%
-----------
-----------
-Model's average performance (81 trees): 75.50% (precision: 72.09% / recall: 65.07%)
-F1-measure from averages: 68.40%
-----------
-----------
-Model's average performance (82 trees): 75.40% (precision: 72.00% / recall: 64.52%)
-F1-measure from averages: 68.06%
-----------
-----------
-Model's average performance (83 trees): 74.20% (precision: 69.65% / recall: 62.90%)
-F1-measure from averages: 66.10%
-----------
-----------
-Model's average performance (84 trees): 76.30% (precision: 73.41% / recall: 65.64%)
-F1-measure from averages: 69.31%
-----------
-----------
-Model's average performance (85 trees): 75.50% (precision: 72.27% / recall: 64.50%)
-F1-measure from averages: 68.16%
-----------
-----------
-Model's average performance (86 trees): 73.70% (precision: 68.61% / recall: 61.98%)
-F1-measure from averages: 65.13%
-----------
-----------
-Model's average performance (87 trees): 73.30% (precision: 67.97% / recall: 61.60%)
-F1-measure from averages: 64.62%
-----------
-----------
-Model's average performance (88 trees): 74.40% (precision: 70.45% / recall: 63.14%)
-F1-measure from averages: 66.60%
-----------
-----------
-Model's average performance (89 trees): 74.30% (precision: 69.50% / recall: 62.98%)
-F1-measure from averages: 66.08%
-----------
-----------
-Model's average performance (90 trees): 75.40% (precision: 72.30% / recall: 64.43%)
-F1-measure from averages: 68.14%
-----------
-----------
-Model's average performance (91 trees): 75.20% (precision: 72.04% / recall: 63.62%)
-F1-measure from averages: 67.57%
-----------
-----------
-Model's average performance (92 trees): 75.80% (precision: 71.94% / recall: 65.10%)
-F1-measure from averages: 68.35%
-----------
-----------
-Model's average performance (93 trees): 73.80% (precision: 69.89% / recall: 62.14%)
-F1-measure from averages: 65.79%
-----------
-----------
-Model's average performance (94 trees): 75.30% (precision: 71.87% / recall: 64.26%)
-F1-measure from averages: 67.85%
-----------
-----------
-Model's average performance (95 trees): 75.30% (precision: 71.64% / recall: 64.36%)
-F1-measure from averages: 67.80%
-----------
-----------
-Model's average performance (96 trees): 75.90% (precision: 73.21% / recall: 64.88%)
-F1-measure from averages: 68.79%
-----------
-----------
-Model's average performance (97 trees): 74.40% (precision: 70.42% / recall: 63.62%)
-F1-measure from averages: 66.85%
-----------
-----------
-Model's average performance (98 trees): 74.50% (precision: 70.38% / recall: 63.50%)
-F1-measure from averages: 66.76%
-----------
-----------
-Model's average performance (99 trees): 74.80% (precision: 70.51% / recall: 63.71%)
-F1-measure from averages: 66.94%
-----------
-----------
-Model's average performance (100 trees): 75.30% (precision: 71.69% / recall: 64.45%)
-F1-measure from averages: 67.88%
-----------
-------------------------- Spambase
-----------
-Model's average performance (9 trees): 94.68% (precision: 94.57% / recall: 94.27%)
-F1-measure from averages: 94.42%
-----------
-----------
-Model's average performance (10 trees): 94.68% (precision: 94.49% / recall: 94.34%)
-F1-measure from averages: 94.42%
-----------
-----------
-Model's average performance (11 trees): 94.72% (precision: 94.57% / recall: 94.36%)
-F1-measure from averages: 94.47%
-----------
-----------
-Model's average performance (12 trees): 94.83% (precision: 94.72% / recall: 94.44%)
-F1-measure from averages: 94.58%
-----------
-----------
-Model's average performance (13 trees): 94.61% (precision: 94.55% / recall: 94.15%)
-F1-measure from averages: 94.35%
-----------
-----------
-Model's average performance (14 trees): 95.00% (precision: 94.92% / recall: 94.60%)
-F1-measure from averages: 94.76%
-----------
-----------
-Model's average performance (15 trees): 95.13% (precision: 95.03% / recall: 94.78%)
-F1-measure from averages: 94.90%
-----------
-----------
-Model's average performance (16 trees): 95.07% (precision: 95.01% / recall: 94.65%)
-F1-measure from averages: 94.83%
-----------
-----------
-Model's average performance (17 trees): 95.18% (precision: 95.13% / recall: 94.76%)
-F1-measure from averages: 94.95%
-----------
-----------
-Model's average performance (18 trees): 95.00% (precision: 94.89% / recall: 94.65%)
-F1-measure from averages: 94.77%
-----------
-----------
-Model's average performance (19 trees): 95.11% (precision: 95.01% / recall: 94.74%)
-F1-measure from averages: 94.88%
-----------
-----------
-Model's average performance (20 trees): 94.94% (precision: 94.83% / recall: 94.58%)
-F1-measure from averages: 94.70%
-----------
-----------
-Model's average performance (21 trees): 95.35% (precision: 95.33% / recall: 94.95%)
-F1-measure from averages: 95.14%
-----------
-----------
-Model's average performance (22 trees): 95.22% (precision: 95.14% / recall: 94.85%)
-F1-measure from averages: 95.00%
-----------
-----------
-Model's average performance (23 trees): 95.35% (precision: 95.28% / recall: 94.98%)
-F1-measure from averages: 95.13%
-----------
-----------
-Model's average performance (24 trees): 94.94% (precision: 94.89% / recall: 94.51%)
-F1-measure from averages: 94.70%
-----------
-----------
-Model's average performance (25 trees): 95.44% (precision: 95.35% / recall: 95.12%)
-F1-measure from averages: 95.23%
-----------
-----------
-Model's average performance (26 trees): 95.44% (precision: 95.31% / recall: 95.13%)
-F1-measure from averages: 95.22%
-----------
-----------
-Model's average performance (27 trees): 95.24% (precision: 95.18% / recall: 94.86%)
-F1-measure from averages: 95.02%
-----------
-----------
-Model's average performance (28 trees): 95.15% (precision: 95.09% / recall: 94.77%)
-F1-measure from averages: 94.93%
-----------
-----------
-Model's average performance (29 trees): 94.87% (precision: 94.73% / recall: 94.53%)
-F1-measure from averages: 94.63%
-----------
-----------
-Model's average performance (30 trees): 94.98% (precision: 94.90% / recall: 94.58%)
-F1-measure from averages: 94.74%
-----------
-----------
-Model's average performance (31 trees): 95.11% (precision: 95.09% / recall: 94.66%)
-F1-measure from averages: 94.88%
-----------
-----------
-Model's average performance (32 trees): 95.09% (precision: 95.01% / recall: 94.71%)
-F1-measure from averages: 94.86%
-----------
-----------
-Model's average performance (33 trees): 95.22% (precision: 95.13% / recall: 94.85%)
-F1-measure from averages: 94.99%
-----------
-----------
-Model's average performance (34 trees): 95.31% (precision: 95.27% / recall: 94.92%)
-F1-measure from averages: 95.09%
-----------
-----------
-Model's average performance (35 trees): 95.37% (precision: 95.29% / recall: 95.02%)
-F1-measure from averages: 95.16%
-----------
-----------
-Model's average performance (36 trees): 95.26% (precision: 95.19% / recall: 94.88%)
-F1-measure from averages: 95.03%
-----------
-----------
-Model's average performance (37 trees): 95.31% (precision: 95.24% / recall: 94.92%)
-F1-measure from averages: 95.08%
-----------
-----------
-Model's average performance (38 trees): 95.48% (precision: 95.40% / recall: 95.13%)
-F1-measure from averages: 95.26%
-----------
-----------
-Model's average performance (39 trees): 95.35% (precision: 95.26% / recall: 95.00%)
-F1-measure from averages: 95.13%
-----------
-----------
-Model's average performance (40 trees): 95.44% (precision: 95.41% / recall: 95.02%)
-F1-measure from averages: 95.21%
-----------
-----------
-Model's average performance (41 trees): 95.52% (precision: 95.41% / recall: 95.20%)
-F1-measure from averages: 95.31%
-----------
-----------
-Model's average performance (42 trees): 95.13% (precision: 95.04% / recall: 94.77%)
-F1-measure from averages: 94.91%
-----------
-----------
-Model's average performance (43 trees): 95.61% (precision: 95.58% / recall: 95.23%)
-F1-measure from averages: 95.40%
-----------
-----------
-Model's average performance (44 trees): 95.39% (precision: 95.32% / recall: 95.03%)
-F1-measure from averages: 95.18%
-----------
-----------
-Model's average performance (45 trees): 95.44% (precision: 95.38% / recall: 95.06%)
-F1-measure from averages: 95.22%
-----------
-----------
-Model's average performance (46 trees): 95.20% (precision: 95.12% / recall: 94.83%)
-F1-measure from averages: 94.97%
-----------
-----------
-Model's average performance (47 trees): 95.33% (precision: 95.30% / recall: 94.90%)
-F1-measure from averages: 95.10%
-----------
-----------
-Model's average performance (48 trees): 95.37% (precision: 95.33% / recall: 94.97%)
-F1-measure from averages: 95.15%
-----------
-----------
-Model's average performance (49 trees): 95.33% (precision: 95.26% / recall: 94.97%)
-F1-measure from averages: 95.11%
-----------
-----------
-Model's average performance (50 trees): 95.11% (precision: 95.06% / recall: 94.70%)
-F1-measure from averages: 94.88%
-----------
-----------
-Model's average performance (51 trees): 95.28% (precision: 95.25% / recall: 94.86%)
-F1-measure from averages: 95.06%
-----------
-----------
-Model's average performance (52 trees): 95.24% (precision: 95.18% / recall: 94.86%)
-F1-measure from averages: 95.02%
-----------
-----------
-Model's average performance (53 trees): 95.35% (precision: 95.32% / recall: 94.94%)
-F1-measure from averages: 95.13%
-----------
-----------
-Model's average performance (54 trees): 95.35% (precision: 95.31% / recall: 94.94%)
-F1-measure from averages: 95.13%
-----------
-----------
-Model's average performance (55 trees): 95.31% (precision: 95.22% / recall: 94.95%)
-F1-measure from averages: 95.08%
-----------
-----------
-Model's average performance (56 trees): 95.31% (precision: 95.23% / recall: 94.94%)
-F1-measure from averages: 95.08%
-----------
-----------
-Model's average performance (57 trees): 95.15% (precision: 95.08% / recall: 94.76%)
-F1-measure from averages: 94.92%
-----------
-----------
-Model's average performance (58 trees): 95.41% (precision: 95.39% / recall: 95.00%)
-F1-measure from averages: 95.20%
-----------
-----------
-Model's average performance (59 trees): 95.31% (precision: 95.24% / recall: 94.92%)
-F1-measure from averages: 95.08%
-----------
-----------
-Model's average performance (60 trees): 95.35% (precision: 95.31% / recall: 94.95%)
-F1-measure from averages: 95.13%
-----------
-----------
-Model's average performance (61 trees): 95.33% (precision: 95.32% / recall: 94.89%)
-F1-measure from averages: 95.10%
-----------
-----------
-Model's average performance (62 trees): 95.35% (precision: 95.28% / recall: 94.97%)
-F1-measure from averages: 95.12%
-----------
-----------
-Model's average performance (63 trees): 95.37% (precision: 95.30% / recall: 95.01%)
-F1-measure from averages: 95.16%
-----------
-----------
-Model's average performance (64 trees): 95.37% (precision: 95.32% / recall: 94.98%)
-F1-measure from averages: 95.15%
-----------
+German Credit Data Set
+{'nTrees': 1.0, 'avgPerformance': 65.86666666666667, 'avgPrecision': 59.549717296673485, 'avgRecall': 59.55555555555554, 'f1measure': 59.552252858385856}
+{'nTrees': 2.0, 'avgPerformance': 65.0, 'avgPrecision': 58.384005151150895, 'avgRecall': 58.42857142857142, 'f1measure': 58.405517946310574}
+{'nTrees': 3.0, 'avgPerformance': 69.03333333333335, 'avgPrecision': 62.209862317327804, 'avgRecall': 60.738095238095234, 'f1measure': 61.46502418823902}
+{'nTrees': 4.0, 'avgPerformance': 68.76666666666667, 'avgPrecision': 62.27983948659095, 'avgRecall': 60.67460317460317, 'f1measure': 61.46636607814771}
+{'nTrees': 5.0, 'avgPerformance': 70.83333333333333, 'avgPrecision': 64.39286082044582, 'avgRecall': 62.18253968253968, 'f1measure': 63.26837456741972}
+{'nTrees': 6.0, 'avgPerformance': 70.73333333333333, 'avgPrecision': 64.42019741935906, 'avgRecall': 61.6031746031746, 'f1measure': 62.97996308502935}
+{'nTrees': 7.0, 'avgPerformance': 71.43333333333332, 'avgPrecision': 64.7660485932236, 'avgRecall': 61.78571428571428, 'f1measure': 63.24041792486819}
+{'nTrees': 8.0, 'avgPerformance': 70.63333333333333, 'avgPrecision': 63.58131711192965, 'avgRecall': 60.70634920634921, 'f1measure': 62.11044047583683}
+{'nTrees': 9.0, 'avgPerformance': 72.23333333333333, 'avgPrecision': 66.16432006728854, 'avgRecall': 62.19841269841269, 'f1measure': 64.11905563828299}
+{'nTrees': 10.0, 'avgPerformance': 71.93333333333332, 'avgPrecision': 65.75865922494283, 'avgRecall': 62.07936507936508, 'f1measure': 63.865779490769306}
+{'nTrees': 11.0, 'avgPerformance': 73.2, 'avgPrecision': 67.70984229781956, 'avgRecall': 63.333333333333336, 'f1measure': 65.44842863125812}
+{'nTrees': 12.0, 'avgPerformance': 72.5, 'avgPrecision': 66.74344917198808, 'avgRecall': 62.54761904761903, 'f1measure': 64.57447422004269}
+{'nTrees': 13.0, 'avgPerformance': 72.3, 'avgPrecision': 66.1939411913091, 'avgRecall': 61.80158730158729, 'f1measure': 63.920615158194494}
+{'nTrees': 14.0, 'avgPerformance': 72.99999999999999, 'avgPrecision': 67.47872079395192, 'avgRecall': 63.03174603174603, 'f1measure': 65.17920914850102}
+{'nTrees': 15.0, 'avgPerformance': 73.50000000000001, 'avgPrecision': 68.098711679423, 'avgRecall': 63.26190476190476, 'f1measure': 65.58909159598161}
+{'nTrees': 16.0, 'avgPerformance': 73.53333333333333, 'avgPrecision': 68.07597281628641, 'avgRecall': 63.793650793650784, 'f1measure': 65.86524643044936}
+{'nTrees': 17.0, 'avgPerformance': 73.83333333333333, 'avgPrecision': 68.9538538828722, 'avgRecall': 63.37301587301588, 'f1measure': 66.04454950921154}
+{'nTrees': 18.0, 'avgPerformance': 72.99999999999999, 'avgPrecision': 67.37792864932283, 'avgRecall': 62.77777777777778, 'f1measure': 64.99614327176018}
+{'nTrees': 19.0, 'avgPerformance': 73.53333333333335, 'avgPrecision': 68.33136580284433, 'avgRecall': 63.095238095238095, 'f1measure': 65.60843341091955}
+{'nTrees': 20.0, 'avgPerformance': 73.10000000000001, 'avgPrecision': 67.74598803296907, 'avgRecall': 62.563492063492056, 'f1measure': 65.05076987797291}
+{'nTrees': 21.0, 'avgPerformance': 73.60000000000001, 'avgPrecision': 68.30911586687465, 'avgRecall': 63.01587301587301, 'f1measure': 65.55567282659634}
+{'nTrees': 22.0, 'avgPerformance': 73.06666666666665, 'avgPrecision': 67.54558606926021, 'avgRecall': 62.31746031746032, 'f1measure': 64.82616434577044}
+{'nTrees': 23.0, 'avgPerformance': 73.2, 'avgPrecision': 68.07399966012098, 'avgRecall': 62.41269841269841, 'f1measure': 65.11980801992335}
+{'nTrees': 24.0, 'avgPerformance': 74.46666666666668, 'avgPrecision': 70.36393761057934, 'avgRecall': 64.17460317460318, 'f1measure': 67.12529834572841}
+{'nTrees': 25.0, 'avgPerformance': 74.16666666666667, 'avgPrecision': 69.5150950803643, 'avgRecall': 63.166666666666664, 'f1measure': 66.18694100570879}
+{'nTrees': 26.0, 'avgPerformance': 74.10000000000001, 'avgPrecision': 69.17830225821623, 'avgRecall': 63.46825396825397, 'f1measure': 66.2002715128648}
+{'nTrees': 27.0, 'avgPerformance': 74.06666666666666, 'avgPrecision': 69.31437972837257, 'avgRecall': 63.0, 'f1measure': 66.00575115258688}
+{'nTrees': 28.0, 'avgPerformance': 73.56666666666666, 'avgPrecision': 68.37120608235831, 'avgRecall': 63.055555555555564, 'f1measure': 65.6049076090029}
+{'nTrees': 29.0, 'avgPerformance': 73.76666666666667, 'avgPrecision': 69.31383664990587, 'avgRecall': 62.436507936507944, 'f1measure': 65.69527826895926}
+{'nTrees': 30.0, 'avgPerformance': 73.76666666666667, 'avgPrecision': 68.91972233086123, 'avgRecall': 62.65873015873015, 'f1measure': 65.63989134495408}
+{'nTrees': 31.0, 'avgPerformance': 74.93333333333334, 'avgPrecision': 70.80315896191645, 'avgRecall': 64.44444444444444, 'f1measure': 67.47379064168867}
+{'nTrees': 32.0, 'avgPerformance': 75.16666666666667, 'avgPrecision': 71.4051644286218, 'avgRecall': 64.70634920634922, 'f1measure': 67.8898836142057}
+{'nTrees': 33.0, 'avgPerformance': 74.36666666666667, 'avgPrecision': 69.85539451457298, 'avgRecall': 63.94444444444445, 'f1measure': 66.76682959158504}
+{'nTrees': 34.0, 'avgPerformance': 74.36666666666667, 'avgPrecision': 69.78274984178248, 'avgRecall': 63.468253968253975, 'f1measure': 66.47436721024583}
+{'nTrees': 35.0, 'avgPerformance': 74.6, 'avgPrecision': 70.4892275959657, 'avgRecall': 63.888888888888886, 'f1measure': 67.02270459425279}
+{'nTrees': 36.0, 'avgPerformance': 74.86666666666667, 'avgPrecision': 70.91456345574336, 'avgRecall': 64.3015873015873, 'f1measure': 67.44607163787603}
+{'nTrees': 37.0, 'avgPerformance': 74.5, 'avgPrecision': 69.99572095395631, 'avgRecall': 63.595238095238095, 'f1measure': 66.64069890866493}
+{'nTrees': 38.0, 'avgPerformance': 73.26666666666667, 'avgPrecision': 68.02006115104619, 'avgRecall': 62.46031746031745, 'f1measure': 65.12018736283476}
+{'nTrees': 39.0, 'avgPerformance': 75.16666666666667, 'avgPrecision': 72.30995635860494, 'avgRecall': 63.88095238095239, 'f1measure': 67.83427092393308}
+{'nTrees': 40.0, 'avgPerformance': 74.43333333333332, 'avgPrecision': 69.92325951798342, 'avgRecall': 63.32539682539683, 'f1measure': 66.4596444492903}
+{'nTrees': 41.0, 'avgPerformance': 74.26666666666667, 'avgPrecision': 69.87235590254512, 'avgRecall': 63.3015873015873, 'f1measure': 66.42430277577377}
+{'nTrees': 42.0, 'avgPerformance': 74.96666666666667, 'avgPrecision': 70.88623083480947, 'avgRecall': 64.05555555555556, 'f1measure': 67.29688888798874}
+{'nTrees': 43.0, 'avgPerformance': 74.49999999999999, 'avgPrecision': 70.36173147079307, 'avgRecall': 63.43650793650793, 'f1measure': 66.71981390251197}
+{'nTrees': 44.0, 'avgPerformance': 74.13333333333334, 'avgPrecision': 69.56347431383001, 'avgRecall': 63.33333333333332, 'f1measure': 66.30161921818875}
+{'nTrees': 45.0, 'avgPerformance': 74.16666666666667, 'avgPrecision': 69.70998468815996, 'avgRecall': 63.134920634920626, 'f1measure': 66.2580775387882}
+{'nTrees': 46.0, 'avgPerformance': 75.7, 'avgPrecision': 72.52659635619644, 'avgRecall': 64.96031746031746, 'f1measure': 68.5348980732208}
+{'nTrees': 47.0, 'avgPerformance': 74.4, 'avgPrecision': 70.48525554891008, 'avgRecall': 63.174603174603185, 'f1measure': 66.62997286937697}
+{'nTrees': 48.0, 'avgPerformance': 73.86666666666667, 'avgPrecision': 69.11765935586975, 'avgRecall': 62.57142857142858, 'f1measure': 65.6781617368561}
+{'nTrees': 49.0, 'avgPerformance': 75.56666666666668, 'avgPrecision': 72.26679611488593, 'avgRecall': 64.64285714285715, 'f1measure': 68.2405290741372}
+{'nTrees': 50.0, 'avgPerformance': 74.83333333333333, 'avgPrecision': 71.34466958675404, 'avgRecall': 64.02380952380953, 'f1measure': 67.48505370118025}
+
+Vertebral Column Data Set
+{'nTrees': 1.0, 'avgPerformance': 81.72043010752688, 'avgPrecision': 68.27965743884216, 'avgRecall': 68.55555555555556, 'f1measure': 68.41727150010098}
+{'nTrees': 2.0, 'avgPerformance': 81.29032258064517, 'avgPrecision': 68.95799204713035, 'avgRecall': 68.51851851851852, 'f1measure': 68.73646117333219}
+{'nTrees': 3.0, 'avgPerformance': 85.59139784946235, 'avgPrecision': 75.32260768032181, 'avgRecall': 74.33333333333333, 'f1measure': 74.82445015482517}
+{'nTrees': 4.0, 'avgPerformance': 85.01792114695341, 'avgPrecision': 74.44272503573329, 'avgRecall': 73.70370370370371, 'f1measure': 74.06753184758493}
+{'nTrees': 5.0, 'avgPerformance': 86.37992831541219, 'avgPrecision': 76.35178773659167, 'avgRecall': 75.44444444444444, 'f1measure': 75.89479159298874}
+{'nTrees': 6.0, 'avgPerformance': 85.16129032258065, 'avgPrecision': 74.1346383282658, 'avgRecall': 73.66666666666667, 'f1measure': 73.89936978093766}
+{'nTrees': 7.0, 'avgPerformance': 86.81003584229391, 'avgPrecision': 76.90198618126895, 'avgRecall': 76.51851851851852, 'f1measure': 76.70954563588924}
+{'nTrees': 8.0, 'avgPerformance': 86.30824372759857, 'avgPrecision': 76.31461367245682, 'avgRecall': 76.11111111111113, 'f1measure': 76.2113675929474}
+{'nTrees': 9.0, 'avgPerformance': 86.02150537634408, 'avgPrecision': 75.194597795088, 'avgRecall': 74.7037037037037, 'f1measure': 74.94709494843909}
+{'nTrees': 10.0, 'avgPerformance': 86.95340501792116, 'avgPrecision': 77.08406780697801, 'avgRecall': 76.55555555555556, 'f1measure': 76.81805603526456}
+{'nTrees': 11.0, 'avgPerformance': 87.0967741935484, 'avgPrecision': 77.88090940038825, 'avgRecall': 76.44444444444444, 'f1measure': 77.15540860150826}
+{'nTrees': 12.0, 'avgPerformance': 86.02150537634411, 'avgPrecision': 75.69479522407799, 'avgRecall': 75.07407407407408, 'f1measure': 75.38143179189909}
+{'nTrees': 13.0, 'avgPerformance': 85.80645161290323, 'avgPrecision': 75.27970177970178, 'avgRecall': 75.29629629629629, 'f1measure': 75.287671296404}
+{'nTrees': 14.0, 'avgPerformance': 86.95340501792116, 'avgPrecision': 76.64863549667471, 'avgRecall': 76.44444444444444, 'f1measure': 76.54620386641402}
+{'nTrees': 15.0, 'avgPerformance': 87.0967741935484, 'avgPrecision': 76.68888247306721, 'avgRecall': 76.33333333333334, 'f1measure': 76.5104092054312}
+{'nTrees': 16.0, 'avgPerformance': 87.168458781362, 'avgPrecision': 77.28036496909046, 'avgRecall': 77.0, 'f1measure': 77.13887554125897}
+{'nTrees': 17.0, 'avgPerformance': 86.59498207885304, 'avgPrecision': 76.26832747098486, 'avgRecall': 75.77777777777779, 'f1measure': 76.02198091222301}
+{'nTrees': 18.0, 'avgPerformance': 87.74193548387098, 'avgPrecision': 78.86154613360496, 'avgRecall': 77.8888888888889, 'f1measure': 78.37192899291138}
+{'nTrees': 19.0, 'avgPerformance': 86.45161290322581, 'avgPrecision': 76.44452252540486, 'avgRecall': 75.74074074074075, 'f1measure': 76.08926957952404}
+{'nTrees': 20.0, 'avgPerformance': 87.0967741935484, 'avgPrecision': 78.12067199799398, 'avgRecall': 76.92592592592592, 'f1measure': 77.51415500935052}
+{'nTrees': 21.0, 'avgPerformance': 87.0967741935484, 'avgPrecision': 77.86448636693734, 'avgRecall': 76.85185185185185, 'f1measure': 77.3516548476198}
+{'nTrees': 22.0, 'avgPerformance': 86.88172043010752, 'avgPrecision': 76.89173671281515, 'avgRecall': 76.48148148148147, 'f1measure': 76.68568249051505}
+{'nTrees': 23.0, 'avgPerformance': 86.88172043010752, 'avgPrecision': 76.3529776323894, 'avgRecall': 75.81481481481482, 'f1measure': 76.08238069592012}
+{'nTrees': 24.0, 'avgPerformance': 87.52688172043013, 'avgPrecision': 78.28875962454396, 'avgRecall': 77.37037037037038, 'f1measure': 77.82650245829656}
+{'nTrees': 25.0, 'avgPerformance': 87.31182795698926, 'avgPrecision': 77.60983860003468, 'avgRecall': 77.0, 'f1measure': 77.30336497842904}
+{'nTrees': 26.0, 'avgPerformance': 86.3799283154122, 'avgPrecision': 75.49754512009413, 'avgRecall': 75.22222222222221, 'f1measure': 75.35892026824611}
+{'nTrees': 27.0, 'avgPerformance': 87.52688172043013, 'avgPrecision': 78.86338842711392, 'avgRecall': 77.66666666666666, 'f1measure': 78.26006705214928}
+{'nTrees': 28.0, 'avgPerformance': 87.38351254480285, 'avgPrecision': 77.570329366769, 'avgRecall': 76.74074074074075, 'f1measure': 77.15324572000296}
+{'nTrees': 29.0, 'avgPerformance': 87.52688172043013, 'avgPrecision': 77.7692166221578, 'avgRecall': 77.07407407407408, 'f1measure': 77.41736596523727}
+{'nTrees': 30.0, 'avgPerformance': 87.8853046594982, 'avgPrecision': 78.79312499410541, 'avgRecall': 78.77777777777779, 'f1measure': 78.78529332990023}
+{'nTrees': 31.0, 'avgPerformance': 86.88172043010752, 'avgPrecision': 77.89994546121999, 'avgRecall': 76.22222222222223, 'f1measure': 77.05125402103737}
+{'nTrees': 32.0, 'avgPerformance': 86.88172043010753, 'avgPrecision': 77.3686501502549, 'avgRecall': 76.33333333333333, 'f1measure': 76.84742967842338}
+{'nTrees': 33.0, 'avgPerformance': 87.38351254480288, 'avgPrecision': 78.29847948939796, 'avgRecall': 77.25925925925925, 'f1measure': 77.77461465590056}
+{'nTrees': 34.0, 'avgPerformance': 87.31182795698925, 'avgPrecision': 78.1437173937174, 'avgRecall': 77.29629629629629, 'f1measure': 77.71651510482413}
+{'nTrees': 35.0, 'avgPerformance': 87.45519713261648, 'avgPrecision': 77.97856029228579, 'avgRecall': 77.25925925925928, 'f1measure': 77.61630585179266}
+{'nTrees': 36.0, 'avgPerformance': 87.67025089605734, 'avgPrecision': 78.16755558396426, 'avgRecall': 77.4074074074074, 'f1measure': 77.78527786679003}
+{'nTrees': 37.0, 'avgPerformance': 87.168458781362, 'avgPrecision': 77.75304633637967, 'avgRecall': 77.03703703703704, 'f1measure': 77.39310219991314}
+{'nTrees': 38.0, 'avgPerformance': 86.52329749103944, 'avgPrecision': 76.45674024595593, 'avgRecall': 75.37037037037037, 'f1measure': 75.90897436399383}
+{'nTrees': 39.0, 'avgPerformance': 87.81362007168461, 'avgPrecision': 78.45941558441558, 'avgRecall': 77.66666666666667, 'f1measure': 78.0604171811466}
+{'nTrees': 40.0, 'avgPerformance': 87.59856630824373, 'avgPrecision': 78.43703609389884, 'avgRecall': 77.1111111111111, 'f1measure': 77.76625900641112}
+{'nTrees': 41.0, 'avgPerformance': 87.38351254480285, 'avgPrecision': 77.73130056218291, 'avgRecall': 77.1111111111111, 'f1measure': 77.41983936286103}
+{'nTrees': 42.0, 'avgPerformance': 87.02508960573478, 'avgPrecision': 76.93073946750418, 'avgRecall': 76.14814814814814, 'f1measure': 76.53656257489875}
+{'nTrees': 43.0, 'avgPerformance': 87.67025089605734, 'avgPrecision': 78.02554054992135, 'avgRecall': 77.5925925925926, 'f1measure': 77.80842223323349}
+{'nTrees': 44.0, 'avgPerformance': 87.45519713261649, 'avgPrecision': 77.68619969355264, 'avgRecall': 77.22222222222223, 'f1measure': 77.45339389843933}
+{'nTrees': 45.0, 'avgPerformance': 87.74193548387098, 'avgPrecision': 77.93950004244122, 'avgRecall': 77.22222222222221, 'f1measure': 77.57502221014954}
+{'nTrees': 46.0, 'avgPerformance': 87.88530465949822, 'avgPrecision': 78.22314667902901, 'avgRecall': 77.74074074074072, 'f1measure': 77.98066387719545}
+{'nTrees': 47.0, 'avgPerformance': 87.38351254480285, 'avgPrecision': 77.22039743118174, 'avgRecall': 76.55555555555556, 'f1measure': 76.88574027069639}
+{'nTrees': 48.0, 'avgPerformance': 87.31182795698925, 'avgPrecision': 78.32905620160521, 'avgRecall': 77.07407407407406, 'f1measure': 77.69526809847211}
+{'nTrees': 49.0, 'avgPerformance': 88.10035842293905, 'avgPrecision': 78.84196894245913, 'avgRecall': 78.4074074074074, 'f1measure': 78.62338425427879}
+{'nTrees': 50.0, 'avgPerformance': 87.59856630824373, 'avgPrecision': 78.3923298923299, 'avgRecall': 77.70370370370371, 'f1measure': 78.04615927337245}
+
+Wine Data Set
+{'nTrees': 1.0, 'avgPerformance': 92.01888162672476, 'avgPrecision': 90.30114638447974, 'avgRecall': 88.32936507936508, 'f1measure': 89.30223646551123}
+{'nTrees': 2.0, 'avgPerformance': 89.27378358750907, 'avgPrecision': 86.46825396825398, 'avgRecall': 83.7883597883598, 'f1measure': 85.10550341276196}
+{'nTrees': 3.0, 'avgPerformance': 94.64052287581698, 'avgPrecision': 92.6089065255732, 'avgRecall': 92.67195767195767, 'f1measure': 92.63978641621877}
+{'nTrees': 4.0, 'avgPerformance': 94.0087145969499, 'avgPrecision': 92.17548500881833, 'avgRecall': 91.44576719576719, 'f1measure': 91.80773966142829}
+{'nTrees': 5.0, 'avgPerformance': 97.01525054466231, 'avgPrecision': 96.02028218694886, 'avgRecall': 96.08730158730158, 'f1measure': 96.05306557027376}
+{'nTrees': 6.0, 'avgPerformance': 95.88961510530139, 'avgPrecision': 94.95943562610229, 'avgRecall': 94.0820105820106, 'f1measure': 94.51825661151288}
+{'nTrees': 7.0, 'avgPerformance': 97.62527233115468, 'avgPrecision': 96.7751322751323, 'avgRecall': 96.8941798941799, 'f1measure': 96.83454147573723}
+{'nTrees': 8.0, 'avgPerformance': 97.12418300653593, 'avgPrecision': 96.30776014109348, 'avgRecall': 95.86772486772487, 'f1measure': 96.08723228675319}
+{'nTrees': 9.0, 'avgPerformance': 97.24763979665941, 'avgPrecision': 96.43121693121692, 'avgRecall': 96.38227513227514, 'f1measure': 96.40669910294378}
+{'nTrees': 10.0, 'avgPerformance': 97.88671023965144, 'avgPrecision': 97.15873015873017, 'avgRecall': 97.24867724867727, 'f1measure': 97.20351747970186}
+{'nTrees': 11.0, 'avgPerformance': 96.44880174291939, 'avgPrecision': 94.95767195767196, 'avgRecall': 95.02910052910052, 'f1measure': 94.99312090182666}
+{'nTrees': 12.0, 'avgPerformance': 97.61074800290487, 'avgPrecision': 96.89858906525573, 'avgRecall': 96.79497354497353, 'f1measure': 96.84575834079926}
+{'nTrees': 13.0, 'avgPerformance': 96.61583151779229, 'avgPrecision': 95.58377425044091, 'avgRecall': 95.71031746031747, 'f1measure': 95.64645215038365}
+{'nTrees': 14.0, 'avgPerformance': 96.97893972403774, 'avgPrecision': 95.82671957671955, 'avgRecall': 95.70238095238096, 'f1measure': 95.76435429002352}
+{'nTrees': 15.0, 'avgPerformance': 97.26942628903413, 'avgPrecision': 96.3641975308642, 'avgRecall': 96.42724867724867, 'f1measure': 96.39546858458976}
+{'nTrees': 16.0, 'avgPerformance': 97.24763979665939, 'avgPrecision': 96.33597883597885, 'avgRecall': 96.51455026455027, 'f1measure': 96.42511607813657}
+{'nTrees': 17.0, 'avgPerformance': 97.53086419753087, 'avgPrecision': 96.69620811287479, 'avgRecall': 96.69576719576719, 'f1measure': 96.69583996948472}
+{'nTrees': 18.0, 'avgPerformance': 98.24981844589688, 'avgPrecision': 97.57142857142857, 'avgRecall': 97.79761904761905, 'f1measure': 97.68437327054558}
+{'nTrees': 19.0, 'avgPerformance': 97.48729121278141, 'avgPrecision': 96.76807760141094, 'avgRecall': 96.64285714285715, 'f1measure': 96.70531846875717}
+{'nTrees': 20.0, 'avgPerformance': 97.84313725490195, 'avgPrecision': 96.92460317460319, 'avgRecall': 97.31481481481482, 'f1measure': 97.11927305316607}
+{'nTrees': 21.0, 'avgPerformance': 97.74146695715324, 'avgPrecision': 96.91931216931219, 'avgRecall': 97.11243386243386, 'f1measure': 97.01576557403605}
+{'nTrees': 22.0, 'avgPerformance': 97.74872912127813, 'avgPrecision': 96.9400352733686, 'avgRecall': 97.13888888888887, 'f1measure': 97.03926980760541}
+{'nTrees': 23.0, 'avgPerformance': 97.36383442265794, 'avgPrecision': 96.44708994708996, 'avgRecall': 96.46031746031747, 'f1measure': 96.45362472549483}
+{'nTrees': 24.0, 'avgPerformance': 97.62527233115468, 'avgPrecision': 96.9563492063492, 'avgRecall': 96.74867724867727, 'f1measure': 96.85232344803363}
+{'nTrees': 25.0, 'avgPerformance': 97.49455337690631, 'avgPrecision': 96.73853615520284, 'avgRecall': 96.71164021164022, 'f1measure': 96.7248138342776}
+{'nTrees': 26.0, 'avgPerformance': 98.00290486564995, 'avgPrecision': 97.21031746031747, 'avgRecall': 97.5, 'f1measure': 97.35492842911776}
+{'nTrees': 27.0, 'avgPerformance': 96.89179375453882, 'avgPrecision': 95.71164021164022, 'avgRecall': 95.9748677248677, 'f1measure': 95.8430205523827}
+{'nTrees': 28.0, 'avgPerformance': 97.48729121278141, 'avgPrecision': 96.57936507936508, 'avgRecall': 96.67195767195767, 'f1measure': 96.62554904522356}
+{'nTrees': 29.0, 'avgPerformance': 98.24255628177197, 'avgPrecision': 97.61816578483246, 'avgRecall': 97.83730158730158, 'f1measure': 97.7275526719193}
+{'nTrees': 30.0, 'avgPerformance': 97.73420479302831, 'avgPrecision': 96.87698412698411, 'avgRecall': 97.15608465608466, 'f1measure': 97.01624873252253}
+{'nTrees': 31.0, 'avgPerformance': 98.00290486564997, 'avgPrecision': 97.27116402116401, 'avgRecall': 97.41666666666667, 'f1measure': 97.34380259389717}
+{'nTrees': 32.0, 'avgPerformance': 97.8867102396514, 'avgPrecision': 97.04894179894181, 'avgRecall': 97.34126984126986, 'f1measure': 97.19462471505072}
+{'nTrees': 33.0, 'avgPerformance': 98.13362381989832, 'avgPrecision': 97.505291005291, 'avgRecall': 97.5925925925926, 'f1measure': 97.54887616767792}
+{'nTrees': 34.0, 'avgPerformance': 97.60348583877995, 'avgPrecision': 96.6494708994709, 'avgRecall': 96.93386243386243, 'f1measure': 96.79145500408195}
+{'nTrees': 35.0, 'avgPerformance': 98.35875090777051, 'avgPrecision': 97.657848324515, 'avgRecall': 97.91005291005293, 'f1measure': 97.7837693591033}
+{'nTrees': 36.0, 'avgPerformance': 98.1190994916485, 'avgPrecision': 97.53174603174604, 'avgRecall': 97.65873015873017, 'f1measure': 97.5949424340032}
+{'nTrees': 37.0, 'avgPerformance': 97.50907770515613, 'avgPrecision': 96.55291005291006, 'avgRecall': 96.79497354497353, 'f1measure': 96.67379020121012}
+{'nTrees': 38.0, 'avgPerformance': 98.12636165577344, 'avgPrecision': 97.37301587301589, 'avgRecall': 97.65873015873017, 'f1measure': 97.51560914707166}
+{'nTrees': 39.0, 'avgPerformance': 97.88671023965139, 'avgPrecision': 97.16534391534394, 'avgRecall': 97.17592592592592, 'f1measure': 97.17049426704956}
+{'nTrees': 40.0, 'avgPerformance': 97.89397240377633, 'avgPrecision': 97.22927689594356, 'avgRecall': 97.2883597883598, 'f1measure': 97.25871383541305}
+{'nTrees': 41.0, 'avgPerformance': 98.27160493827161, 'avgPrecision': 97.61772486772487, 'avgRecall': 97.73412698412699, 'f1measure': 97.67574629305676}
+{'nTrees': 42.0, 'avgPerformance': 98.36601307189544, 'avgPrecision': 97.81128747795417, 'avgRecall': 97.92989417989418, 'f1measure': 97.87053598376367}
+{'nTrees': 43.0, 'avgPerformance': 97.87944807552651, 'avgPrecision': 97.0251322751323, 'avgRecall': 97.1957671957672, 'f1measure': 97.11008703833964}
+{'nTrees': 44.0, 'avgPerformance': 97.77051561365288, 'avgPrecision': 96.80511463844796, 'avgRecall': 97.07275132275133, 'f1measure': 96.93862090490245}
+{'nTrees': 45.0, 'avgPerformance': 97.38562091503267, 'avgPrecision': 96.51984126984127, 'avgRecall': 96.66005291005293, 'f1measure': 96.58978696098247}
+{'nTrees': 46.0, 'avgPerformance': 97.51633986928103, 'avgPrecision': 96.6194885361552, 'avgRecall': 96.79497354497353, 'f1measure': 96.70705944693218}
+{'nTrees': 47.0, 'avgPerformance': 97.74872912127815, 'avgPrecision': 96.93650793650795, 'avgRecall': 97.14285714285715, 'f1measure': 97.03948759849762}
+{'nTrees': 48.0, 'avgPerformance': 98.5112563543936, 'avgPrecision': 97.88227513227514, 'avgRecall': 98.15476190476191, 'f1measure': 98.01827251507206}
+{'nTrees': 49.0, 'avgPerformance': 97.76325344952795, 'avgPrecision': 96.80291005291006, 'avgRecall': 97.15608465608466, 'f1measure': 96.97916800617459}
+{'nTrees': 50.0, 'avgPerformance': 98.01742919389976, 'avgPrecision': 97.39197530864197, 'avgRecall': 97.33333333333336, 'f1measure': 97.3625060201008}
+
+Spambase
+{'nTrees': 1.0, 'avgPerformance': 90.55283095979125, 'avgPrecision': 90.12334418770688, 'avgRecall': 90.15974725127514, 'f1measure': 90.14149625506883}
+{'nTrees': 2.0, 'avgPerformance': 90.22688547266496, 'avgPrecision': 89.77658607380341, 'avgRecall': 89.85554465731026, 'f1measure': 89.81602185955471}
+{'nTrees': 3.0, 'avgPerformance': 92.9144581722154, 'avgPrecision': 92.65665954583487, 'avgRecall': 92.52351397058464, 'f1measure': 92.5900083354609}
+{'nTrees': 4.0, 'avgPerformance': 93.04501870539785, 'avgPrecision': 92.78188740598482, 'avgRecall': 92.6799839891868, 'f1measure': 92.73081220949148}
+{'nTrees': 5.0, 'avgPerformance': 93.81282027099248, 'avgPrecision': 93.6100332540347, 'avgRecall': 93.45485438679033, 'f1measure': 93.53236313765524}
+{'nTrees': 6.0, 'avgPerformance': 93.8782105693357, 'avgPrecision': 93.66863719628664, 'avgRecall': 93.50850736727335, 'f1measure': 93.58849553293139}
+{'nTrees': 7.0, 'avgPerformance': 94.45048571159106, 'avgPrecision': 94.30285897976843, 'avgRecall': 94.07641440247293, 'f1measure': 94.18949888709962}
+{'nTrees': 8.0, 'avgPerformance': 94.35629853186204, 'avgPrecision': 94.1711924305011, 'avgRecall': 94.01823462600358, 'f1measure': 94.09464863341684}
+{'nTrees': 9.0, 'avgPerformance': 94.70410889999687, 'avgPrecision': 94.57607879091086, 'avgRecall': 94.33239385673734, 'f1measure': 94.45407437971583}
+{'nTrees': 10.0, 'avgPerformance': 94.63175516363295, 'avgPrecision': 94.46234727736794, 'avgRecall': 94.29043176348573, 'f1measure': 94.37629544938983}

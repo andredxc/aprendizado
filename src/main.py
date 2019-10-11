@@ -3,8 +3,21 @@ from data import Data
 from decisionTree import DecisionNode, DecisionTree, RandomForest
 import examples
 import sys
-from runSuite import evaluatePerformance
+# from runSuite import evaluatePerformance
 
+
+data = examples.setupWine()
+
+dic = {}
+for entry in data.instances:
+    if entry[data.className] in dic.keys():
+        dic[entry[data.className]] += 1
+    else:
+        dic[entry[data.className]] = 1
+
+print("Dic: {}".format(dic))
+
+exit()
 
 # -------------------------------------------------------------------
 if len(sys.argv) == 1:  #No arguments
