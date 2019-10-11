@@ -3,27 +3,14 @@ from data import Data
 from decisionTree import DecisionNode, DecisionTree, RandomForest
 import examples
 import sys
-# from runSuite import evaluatePerformance
+from runSuite import evaluatePerformance
 
-
-data = examples.setupWine()
-
-dic = {}
-for entry in data.instances:
-    if entry[data.className] in dic.keys():
-        dic[entry[data.className]] += 1
-    else:
-        dic[entry[data.className]] = 1
-
-print("Dic: {}".format(dic))
-
-exit()
 
 # -------------------------------------------------------------------
 if len(sys.argv) == 1:  #No arguments
     #Run sample code
     print("----- No file supplied, running sample code! -----")
-    data = examples.setupCredit()
+    data = examples.setupWine()
     evaluatePerformance(data, 10, 10)
 elif len(sys.argv) == 4:    #Three arguments: training dataset, target class and numeric attributes
     #Run performance evaluation on the supplied dataset
@@ -46,6 +33,8 @@ elif len(sys.argv) == 5:    #Four arguments: training dataset, target class, num
 
     forest = RandomForest(trainingData, testingData)
     forest.generateForest() #Trains the model
+
+    print("----- Training finished, classifying. -----")
 
     #Classifies training data
     for instance in forest.testingData.instances:

@@ -68,9 +68,9 @@ def evaluatePerformance(data, nForests=10, nTrees=10):
         iterationAvgPrecision = sum(iterationPrecisions)/len(iterationPrecisions)
         iterationAvgRecall = sum(iterationRecalls)/len(iterationRecalls)
 
-        # print("----- Forest {} -----".format(iteration))
+        print("----- Forest {} -----".format(iteration))
         forest.evaluateTreesPerformance()
-        # print("Forest performance: {:.2f}% of guesses (precision: {:.2f}% / recall: {:.2f}%)".format(iterationAvgPerformance*100, iterationAvgPrecision*100, iterationAvgRecall*100))
+        print("Forest performance: {:.2f}% of guesses (precision: {:.2f}% / recall: {:.2f}%)".format(iterationAvgPerformance*100, iterationAvgPrecision*100, iterationAvgRecall*100))
 
         allPerformances.append(iterationAvgPerformance)   #Adds this iteration's performance to the list
         allPrecisions.append(iterationAvgPrecision)   #Adds this iteration's precision to the list
