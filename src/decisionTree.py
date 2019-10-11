@@ -86,7 +86,7 @@ class RandomForest(object):
             treePerformances.append(rightGuesses/len(tree.testingData.instances))
 
         for i in range(len(treePerformances)):
-            # print("    Tree {} got {:.2f}% of the instances right.".format(i, treePerformances[i]*100))
+            print("    Tree {} got {:.2f}% of the instances right.".format(i, treePerformances[i]*100))
             pass
 
 
